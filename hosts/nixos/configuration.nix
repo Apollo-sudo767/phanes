@@ -63,15 +63,6 @@
     fira-code-symbols
   ];
 
-  # Common user settings - specific users will be defined per host
-  users.users = {
-    apollo = {
-      isNormalUser = true;
-      description = "Apollo";
-      extraGroups = [ "networkmanager" "wheel" ];
-    };
-  };
-
   # Enable SSH service
   services.openssh = {
     enable = true;
