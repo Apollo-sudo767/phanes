@@ -180,7 +180,7 @@
       # Laptop - tartarus
       tartarus = mkNixosConfig {
         hostname = "tartarus";
-        username = "apollo";
+        username = "aries";
         system = "x86_64-linux";
       };
       
@@ -216,15 +216,15 @@
         ];
       };
 
-      "apollo@tartarus" = home-manager.lib.homeManagerConfiguration {
+      "aries@tartarus" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;
           hostname = "tartarus";
-          username = "apollo";
+          username = "aries";
         };
         modules = [
-          ./home/apollo.nix
+          ./home/aries.nix
         ];
       };
 

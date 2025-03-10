@@ -20,42 +20,31 @@
     nmap
   ];
 
-  # Server-specific services
-  services = {
-    # Example Minecraft server using nix-minecraft
-    minecraft-server = {
-      enable = true;
-      eula = true;
-      package = pkgs.minecraftServers.vanilla-1-19;
-      openFirewall = true;
-      declarative = true;
-      serverProperties = {
-        server-port = 25565;
-        difficulty = 3;
-        gamemode = "survival";
-        max-players = 10;
-        motd = "Aether Minecraft Server";
-        white-list = true;
-      };
-    };
-
-    # Secure SSH configuration
-    openssh = {
-      enable = true;
-      settings = {
-        PermitRootLogin = "no";
-        PasswordAuthentication = false;
-      };
+  # Secure SSH configuration
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = true;
     };
   };
 
   # Networking for server
   networking = {
+    networkmanager.enable = true;
+    networking.defaultGateway = "192.168.1.254";
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 25565 ];
+      allowedTCPPorts = [ 24454 25565 8080 ];
+      allowedUDPPorts = [ 24454 25565 8080 ];
     };
   };
+  networking.interfaces.enp3s0.ipv4.addresses = [
+    {
+      address = "192.168.1.170";
+      prefixLength = 24;
+    }
+  ];
 
   # Server user configuration
   users.users.hermes = {
@@ -65,5 +54,5 @@
   };
 
   # System-specific state version
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.11";
 }

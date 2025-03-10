@@ -95,7 +95,7 @@
   };
 
   # Don't require password for sudo
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo.wheelNeedsPassword = true;
 
   # System state version
   system.stateVersion = "25.05";

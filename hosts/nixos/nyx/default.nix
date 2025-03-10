@@ -17,13 +17,8 @@
     };
   };
 
-  # Networking basics - host-specific configs will be in their respective directories
-  networking = {
-    networkmanager.enable = true;
-  };
-
   # Time zone and locale settings from your original config
-  time.timeZone = "America/Los_Angeles";
+  time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
   
   # Console keymap
@@ -39,7 +34,7 @@
     usbutils
     curl
     tmux
-    neofetch
+    fastfetch
   ];
 
   # Enable sound with pipewire (from your original config)
@@ -52,16 +47,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  # Fonts configuration
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-  ];
 
   # Common user settings - specific users will be defined per host
   users.users = {
@@ -77,9 +62,13 @@
     enable = true;
     settings = {
       PermitRootLogin = "no";
-      PasswordAuthentication = false;
+      PasswordAuthentication = true;
     };
   };
+
+   # Enable networking
+  networking.networkmanager.enable = true;
+  networking.defaultGateway = "192.168.1.254";
 
   # Nix daemon settings
   nix = {
@@ -95,8 +84,39 @@
   };
 
   # Don't require password for sudo
-  security.sudo.wheelNeedsPassword = false;
+  security.sudo.wheelNeedsPassword = true;
+
+    # for Nvidia GPU
+  # Hardware
+  hardware = {
+    opengl = {
+      enable = true;
+      # driSupport = true;
+      # driSupport32Bit = true;
+      extraPackages = with pkgs; [
+        vaapiVdpau
+        libvdpau-va-gl
+        vulkan-loader
+        vulkan-headers
+        nvidia-vaapi-driver
+        mesa
+        vulkan-tools
+        vulkan-validation-layers
+        #  pkgsi686Linux.vulkan-loader
+      ];
+      extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
+      # setLdLibraryPath = true;
+    };
+    nvidia = {
+      modesetting.enable = true;
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      forceFullCompositionPipeline = true;
+      powerManagement.enable = true;
+    };
+  };
 
   # System state version
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.11";
 }
