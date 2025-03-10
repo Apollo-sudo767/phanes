@@ -1,0 +1,97 @@
+/*******************************************************************************
+ * ROFI SQUARED THEME USING A SPACE BLUE PALETTE WITH ROUNDED WINDOW CORNERS
+ * User                 : LR-Tech               
+ * Theme Repo           : https://github.com/lr-tech/rofi-themes-collection
+ *******************************************************************************/
+
+* {
+    font:   "SF Mono 12";
+
+    bg0:     #1a2a3a; /* Deep space blue for main background */
+    bg1:     #243b4a; /* Slightly lighter blue for contrasting background */
+    fg0:     #d0e0f0; /* Soft light blue for text */
+
+    accent-color:     #4a90e2; /* Bright accent blue */
+    urgent-color:     #ff4d5a; /* Red alert color for urgency */
+
+    background-color:   transparent;
+    text-color:         @fg0;
+
+    margin:     0;
+    padding:    0;
+    spacing:    0;
+}
+
+window {
+    location:           center;
+    width:              480;
+    background-color:   @bg0;
+    border-radius:      10px; /* Rounded corners only for the window */
+}
+
+inputbar {
+    spacing:            8px; 
+    padding:            8px;
+    background-color:   @bg1;
+}
+
+prompt, entry, element-icon, element-text {
+    vertical-align: 0.5;
+}
+
+prompt {
+    text-color: @accent-color;
+}
+
+textbox {
+    padding:            8px;
+    background-color:   @bg1;
+}
+
+listview {
+    padding:            4px 0;
+    lines:              5;
+    columns:            1;
+    fixed-height:       false;
+}
+
+element {
+    padding:            6px;
+    spacing:            8px;
+}
+
+element normal normal {
+    text-color: @fg0;
+}
+
+element normal urgent {
+    text-color: @urgent-color;
+}
+
+element normal active {
+    text-color: @accent-color;
+}
+
+element alternate active {
+    text-color: @accent-color;
+}
+
+element selected {
+    text-color: @bg0;
+}
+
+element selected normal, element selected active {
+    background-color:   @accent-color;
+}
+
+element selected urgent {
+    background-color:   @urgent-color;
+}
+
+element-icon {
+    size:   0.8em;
+}
+
+element-text {
+    text-color: inherit;
+}

@@ -155,9 +155,15 @@
     formatter = forAllSystems (system: pkgsFor.${system}.nixpkgs-fmt);
 
     # Return dev shells
-    devShells = forAllSystems (system: import ./shell.nix { 
-      pkgs = pkgsFor.${system}; 
-    });
+    devShells = forAllSystems (system:
+      let
+        pkgs = pkgsFor.${system};
+        shell = import ./shell.nix { inherit pkgs; };
+      in  {
+          default = shell;
+      }
+    );
+    
 
     # Return overlays
     inherit overlays;
