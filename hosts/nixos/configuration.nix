@@ -4,6 +4,22 @@
 {
   # Import your hardware configuration but we'll handle this per-host
   # imports = [ ./hardware-configuration.nix ];
+  
+  # Common Packages
+  environment.systemPackages = with pkgs; [
+    wget
+    neovim
+    curl 
+    git 
+    sysstat
+    lm_sensors
+    scrot
+    fastfetch
+    blueman
+    waypipe
+    hplip
+    hplipWithPlugin
+  ];
 
   # Bootloader and kernel
   boot = {
@@ -23,24 +39,11 @@
   };
 
   # Time zone and locale settings from your original config
-  time.timeZone = "America/Los_Angeles";
+  time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
   
   # Console keymap
   console.keyMap = "us";
-
-  # Common system packages for all machines
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    git
-    htop
-    pciutils
-    usbutils
-    curl
-    tmux
-    neofetch
-  ];
 
   # Enable sound with pipewire (from your original config)
   sound.enable = true;
@@ -61,6 +64,10 @@
     liberation_ttf
     fira-code
     fira-code-symbols
+    material-design-icons
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.firacode
+    cinzel
   ];
 
   # Enable SSH service
@@ -68,7 +75,7 @@
     enable = true;
     settings = {
       PermitRootLogin = "no";
-      PasswordAuthentication = false;
+      PasswordAuthentication = true;
     };
   };
 
@@ -84,11 +91,14 @@
       options = "--delete-older-than 14d";
     };
   };
-
+  
   # Don't require password for sudo
   security.sudo.wheelNeedsPassword = true;
+  
+  # Allow Unfree Packages
+  nixpkgs.config.allowUnfree = true;
 
   # System state version
-  system.stateVersion = "25.05";
+  system.stateVersion = "24.11";
   
 }

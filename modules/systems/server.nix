@@ -1,34 +1,9 @@
-{ pkgs, lib, username, ... }:
-
 {
   # Define user group
   users.groups.${username} = {};
-  
-  # Define user account
-  users.users.${username} = {
-    isNormalUser = true; # Set to true or false depending on your needs
-    description = "${username}";
-    extraGroups = ["networkmanager" "wheel" "docker"];
-    group = "${username}"; # This must match the username
-  };
-  
+
   # Trusted users
   nix.settings.trusted-users = [username];
-
-  # Nix settings
-  nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
-    substituters = ["https://cache.nixos.org"];
-    trusted-public-keys = ["cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="];
-    builders-use-substitutes = true;
-  };
-
-  # Garbage collection
-  nix.gc = {
-    automatic = lib.mkDefault true;
-    dates = lib.mkDefault "weekly";
-    options = lib.mkDefault "--delete-older-than 7d";
-  };
 
   # Time zone and locales
   time.timeZone = "America/Chicago";
@@ -79,31 +54,9 @@
   #Docker
   virtualisation.docker.enable = true;
 
-  # SSH
-  services.openssh = {
-    enable = true;
-    settings = {
-      X11Forwarding = true;
-      PermitRootLogin = "no";
-      PasswordAuthentication = true;
-      UseDns = true;
-    };
-    openFirewall = true;
-  };
-
   # System packages
   environment.systemPackages = with pkgs; [
-    vim
-    wget
-    curl
-    git
-    sysstat
-    lm_sensors
-    scrot
-    fastfetch
     nnn
-    # blueman
-    # bluez
     pamixer
     playerctl
     gh
@@ -119,12 +72,7 @@
     xdg-desktop-portal
     xdg-user-dirs
     xdg-desktop-portal-gtk
-    # Drivers
-    hplip
-    hplipWithPlugin
-    numlockx
     docker
-    tmux
     kitty
   ];
   
@@ -136,8 +84,6 @@
   environment.etc."kitty/kitty.conf".text = ''
     background_opacity 0.8
     '';
-  # Nixpkgs
-  nixpkgs.config.allowUnfree = true;
 
   # Bluetooth
   hardware.bluetooth.enable = true;

@@ -9,38 +9,12 @@
   boot = {
     # Use latest kernel
     kernelPackages = pkgs.linuxPackages_latest;
-    
-    # Boot loader configuration (from your original config)
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
   };
 
   # Networking basics - host-specific configs will be in their respective directories
   networking = {
     networkmanager.enable = true;
   };
-
-  # Time zone and locale settings from your original config
-  time.timeZone = "America/Chicago";
-  i18n.defaultLocale = "en_US.UTF-8";
-  
-  # Console keymap
-  console.keyMap = "us";
-
-  # Common system packages for all machines
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    git
-    htop
-    pciutils
-    usbutils
-    curl
-    tmux
-    fastfetch
-  ];
 
   # Enable sound with pipewire (from your original config)
   sound.enable = true;
@@ -86,10 +60,4 @@
       options = "--delete-older-than 14d";
     };
   };
-
-  # Don't require password for sudo
-  security.sudo.wheelNeedsPassword = true;
-
-  # System state version
-  system.stateVersion = "24.11";
 }

@@ -4,14 +4,16 @@
 {
   # Import your hardware configuration but we'll handle this per-host
   # imports = [ ./hardware-configuration.nix ];
+  
+  imports = [
+    ../../../modules/regreet-fix.nix
+  ];
 
   # Bootloader and kernel
   boot.loader = {
     efi = {
-      canTouchEfiVariables = true;
       efiSysMountPoint = "/boot"; # ← use the same mount point here.
     };
-    systemd-boot.enable = true;
     systemd-boot.extraFiles."efi/shell.efi" = "${pkgs.edk2-uefi-shell}/shell.efi";
     systemd-boot.extraEntries = {
        # Chainload Windows bootloader via EDK2 Shell
@@ -37,27 +39,6 @@
     };
   };
  
-
-  # Time zone and locale settings from your original config
-  time.timeZone = "America/Chicago";
-  i18n.defaultLocale = "en_US.UTF-8";
-  
-  # Console keymap
-  console.keyMap = "us";
-
-  # Common system packages for all machines
-  environment.systemPackages = with pkgs; [
-    vim
-    wget
-    git
-    htop
-    pciutils
-    usbutils
-    curl
-    tmux
-    fastfetch
-  ];
-
   # Enable sound with pipewire (from your original config)
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -91,27 +72,6 @@
   networking.networkmanager.enable = true;
   networking.defaultGateway = "192.168.1.254";
 
-  # Nix daemon settings
-  nix = {
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      auto-optimise-store = true;
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 14d";
-    };
-  };
-  
-  # Fix Regreet?
-  services.greetd.enable = false;
-  services.regreet.enable = false;
-
-  # Don't require password for sudo
-  security.sudo.wheelNeedsPassword = true;
-
-    # for Nvidia GPU
   # Hardware
   hardware = {
     opengl = {
@@ -141,7 +101,4 @@
       powerManagement.enable = true;
     };
   };
-
-  # System state version
-  system.stateVersion = "24.11";
 }

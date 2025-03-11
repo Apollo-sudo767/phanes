@@ -27,5 +27,5 @@
   systemd.user.startServices = "sd-switch";
 
   # Home Manager state version
-  home.stateVersion = "24.11";
+  home.stateVersion = "23.11";
 }

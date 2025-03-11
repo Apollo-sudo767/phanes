@@ -10,15 +10,6 @@
   # Define hostname
   networking.hostName = "aether";
 
-  # Server-specific packages
-  environment.systemPackages = with pkgs; [
-    htop
-    tmux
-    iotop
-    iftop
-    nethogs
-    nmap
-  ];
 
   # Secure SSH configuration
   services.openssh = {
@@ -53,6 +44,5 @@
     extraGroups = [ "wheel" ];
   };
 
-  # System-specific state version
-  system.stateVersion = "24.11";
+
 }
