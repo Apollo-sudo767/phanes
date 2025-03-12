@@ -3,14 +3,14 @@
 
   inputs = {
     # NixOS official package source, stable version
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     
     # Unstable packages
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Home Manager for managing user configuration
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -28,7 +28,7 @@
 
     # NixVim for Neovim configuration 
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-23.11";
+      url = "github:nix-community/nixvim/nixos-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -64,6 +64,11 @@
       unstable = final: prev: {
         unstable = nixpkgs-unstable.legacyPackages.${prev.system};
       };
+      bemuFix = final: prev: {
+        homeManagerModules = (prev.homeManagerModules or {}) // {
+          bemenu = { ... }: { config = {}; options = {}; };
+        };
+      }; 
     };
 
     # Create nixpkgs config for each system
@@ -73,6 +78,7 @@
       overlays = [
         overlays.default
         overlays.unstable
+        overlays.bemuFix
       ];
     };
 

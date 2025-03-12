@@ -4,7 +4,9 @@
 {
   imports = [
     # Include hardware configuration when available
-    # ./hardware-configuration.nix
+    ./hardware-configuration.nix
+    ../../../modules/systems/server.nix
+    # ../../../modules/containers/
   ];
 
   # Define hostname

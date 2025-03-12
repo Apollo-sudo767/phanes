@@ -3,7 +3,11 @@
 
 {
   # Import your hardware configuration but we'll handle this per-host
-  # imports = [ ./hardware-configuration.nix ];
+  imports = [ 
+    ./hardware-configuration.nix
+    ../../../modules/systems/desktop.nix
+    ../../../modules/DE+WM/gnome.nix
+  ];
 
   # Bootloader and kernel
   boot = {

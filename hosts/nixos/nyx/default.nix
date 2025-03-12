@@ -7,6 +7,8 @@
   
   imports = [
     ../../../modules/regreet-fix.nix
+    ../../../modules/systems/desktop.nix
+    ../../../modules/DE+WM/hyprland.nix
   ];
 
   # Bootloader and kernel

@@ -1,4 +1,4 @@
-{ pkgs, lib, username, ... }:
+{ config, pkgs, lib, username, ... }:
 
 {
   # Trusted users
@@ -11,7 +11,7 @@
   };
   
   # GDM
-  services.xserver.displayManager.gdm = true;
+  services.xserver.displayManager.gdm.enable = true;
 
   # Xbox controller support
   hardware.xone.enable = true;
@@ -49,6 +49,8 @@
     };
     dconf.enable = true;
   };
+ 
+  # Fix Nix Error?
 
   # System packages
   environment.systemPackages = with pkgs; [
@@ -91,9 +93,6 @@
   # Bluetooth
   hardware.bluetooth.enable = true;
   
-  # Sound
-  services.pulseaudio.enable = false;
-
   # Power profiles and policy kit
   # services.power-profiles-daemon.enable = true; # Battery Daemon replaced by TLP
   security.polkit.enable = true;
