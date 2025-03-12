@@ -46,7 +46,6 @@
   console.keyMap = "us";
 
   # Enable sound with pipewire (from your original config)
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -57,19 +56,25 @@
   };
 
   # Fonts configuration
-  fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    material-design-icons
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.firacode
-    cinzel
-  ];
-
+   fonts = {
+    packages = with pkgs;  [
+        material-design-icons
+        noto-fonts
+        noto-fonts-cjk-sans
+        noto-fonts-emoji
+        jetbrains-mono
+        fira-code
+        cinzel
+      ];
+    
+    enableDefaultPackages = false;
+    fontconfig.defaultFonts = {
+      serif = ["Noto Serif" "Noto Color Emoji"];
+      sansSerif = ["Noto Sans" "Noto Color Emoji"];
+      monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
+      emoji = ["Noto Color Emoji"];
+    };
+  };
   # Enable SSH service
   services.openssh = {
     enable = true;
@@ -98,7 +103,4 @@
   # Allow Unfree Packages
   nixpkgs.config.allowUnfree = true;
 
-  # System state version
-  system.stateVersion = "24.11";
-  
 }

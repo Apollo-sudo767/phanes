@@ -91,8 +91,11 @@
       hostname,
       system ? "x86_64-linux", 
       username ? "apollo",
-      stateVersion ? "23.11",
-    }: nixpkgs.lib.nixosSystem {
+      stateVersion ? "24.11",
+      useUnstable ? false, #Flag for using unstable packages
+    }: let
+      pkgs = if useUnstable then pkgsUnstableFor.${system} else pkgsFor.${system};
+    in  nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {
         inherit inputs outputs hostname username stateVersion;
@@ -181,6 +184,7 @@
         hostname = "nyx";
         username = "apollo";
         system = "x86_64-linux";
+        useUnstable = true; 
       };
       
       # Laptop - tartarus
@@ -188,6 +192,7 @@
         hostname = "tartarus";
         username = "aries";
         system = "x86_64-linux";
+        useUnstable = true;
       };
       
       # Server - aether

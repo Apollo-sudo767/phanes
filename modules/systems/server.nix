@@ -1,10 +1,6 @@
+{ config, pkgs, lib, username, ... }:
+
 {
-  # Define user group
-  users.groups.${username} = {};
-
-  # Trusted users
-  nix.settings.trusted-users = [username];
-
   # Time zone and locales
   time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";

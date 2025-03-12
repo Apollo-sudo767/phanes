@@ -34,7 +34,8 @@
     hyprlock
     hypridle
     hyprpaper
-    grimslurp
+    grim
+    slurp
     xdg-desktop-portal
     xdg-user-dirs
     xdg-desktop-portal-hyprland

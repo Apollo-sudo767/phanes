@@ -25,7 +25,7 @@
   # Networking for server
   networking = {
     networkmanager.enable = true;
-    networking.defaultGateway = "192.168.1.254";
+    defaultGateway = "192.168.1.254";
     firewall = {
       enable = true;
       allowedTCPPorts = [ 24454 25565 8080 ];
@@ -45,6 +45,8 @@
     description = "Hermes";
     extraGroups = [ "wheel" ];
   };
-
+ 
+  # Version
+  system.stateVersion = "24.11";
 
 }

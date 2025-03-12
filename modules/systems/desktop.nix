@@ -16,27 +16,6 @@
   # Xbox controller support
   hardware.xone.enable = true;
 
-  # Fonts
-  fonts = {
-    packages = with pkgs;  [
-        material-design-icons
-        noto-fonts
-        noto-fonts-cjk-sans
-        noto-fonts-emoji
-        nerd-fonts.jetbrains-mono
-        nerd-fonts.fira-code
-        cinzel
-      ];
-    
-    enableDefaultPackages = false;
-    fontconfig.defaultFonts = {
-      serif = ["Noto Serif" "Noto Color Emoji"];
-      sansSerif = ["Noto Sans" "Noto Color Emoji"];
-      monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
-      emoji = ["Noto Color Emoji"];
-    };
-  };
-
   # Programs
   programs = {
     gamescope = {
@@ -106,7 +85,7 @@
     };
     fonts = {
       monospace = {
-        package = pkgs.nerd-fonts.jetbrains-mono;
+        package = pkgs.jetbrains-mono;
         name = "JetBrainsMono Nerd Font Mono";
 
       };

@@ -4,7 +4,6 @@
   # Enable GNOME without a display manager
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = false;  # No display manager
     desktopManager.gnome.enable = true; # Only GNOME itself
   };
 

@@ -6,7 +6,7 @@
   # imports = [ ./hardware-configuration.nix ];
   
   imports = [
-    ../../../modules/regreet-fix.nix
+    ./hardware-configuration.nix
     ../../../modules/systems/desktop.nix
     ../../../modules/DE+WM/hyprland.nix
   ];
@@ -41,17 +41,6 @@
     };
   };
  
-  # Enable sound with pipewire (from your original config)
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
   # Common user settings - specific users will be defined per host
   users.users = {
     apollo = {
@@ -76,7 +65,7 @@
 
   # Hardware
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
       # driSupport = true;
       # driSupport32Bit = true;
@@ -103,4 +92,7 @@
       powerManagement.enable = true;
     };
   };
+
+  # System Version
+  system.stateVersion = "25.05";
 }
