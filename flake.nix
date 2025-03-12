@@ -3,41 +3,48 @@
 
   inputs = {
     # NixOS official package source, stable version
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     
     # Unstable packages
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Home Manager for managing user configuration
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+    # Home Manager Stable for managing user configuration
+    home-manager-stable = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
+    # Home Manager Unstable
+    home-manager-unstable = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     # Stylix for consistent theming
     stylix = {
       url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # Minecraft server configuration
     nix-minecraft = {
       url = "github:misterio77/nix-minecraft";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     # NixVim for Neovim configuration 
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
   outputs = inputs @ { 
     self, 
-    nixpkgs, 
+    nixpkgs-stable, 
     nixpkgs-unstable, 
-    home-manager, 
+    home-manager-stable,
+    home-manager-unstable,
     stylix, 
     nix-minecraft, 
     nixvim,
@@ -56,7 +63,7 @@
     
     # This is a function that generates an attribute by calling a function you
     # pass it, with each system as an argument
-    forAllSystems = nixpkgs.lib.genAttrs systems;
+    forAllSystems = nixpkgs-stable.lib.genAttrs systems;
 
     # Overlays to add packages from unstable channel
     overlays = {
@@ -83,7 +90,7 @@
     };
 
     # Define pkgs for each system
-    pkgsFor = forAllSystems (system: mkPkgs system nixpkgs);
+    pkgsFor = forAllSystems (system: mkPkgs system nixpkgs-stable);
     pkgsUnstableFor = forAllSystems (system: mkPkgs system nixpkgs-unstable);
 
     # NixOS configuration for different machines
@@ -93,9 +100,11 @@
       username ? "apollo",
       stateVersion ? "24.11",
       useUnstable ? false, #Flag for using unstable packages
+      useUnstableHomeManager ? false,
     }: let
       pkgs = if useUnstable then pkgsUnstableFor.${system} else pkgsFor.${system};
-    in  nixpkgs.lib.nixosSystem {
+      homeManagerInput = if useUnstableHomeManager then home-manager-unstable else home-manager-stable;
+    in  nixpkgs-stable.lib.nixosSystem {
       inherit system;
       specialArgs = {
         inherit inputs outputs hostname username stateVersion;
@@ -107,7 +116,7 @@
         # Machine-specific configuration
         ./hosts/nixos/${hostname}
         # Home manager module
-        home-manager.nixosModules.home-manager {
+        homeManagerInput.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
@@ -130,7 +139,7 @@
       system ? "aarch64-darwin",
       username ? "apollo",
       stateVersion ? "23.11",
-    }: nixpkgs.lib.darwinSystem {
+    }: nixpkgs-stable.lib.darwinSystem {
       inherit system;
       specialArgs = {
         inherit inputs outputs hostname username stateVersion;
@@ -142,7 +151,7 @@
         # Machine-specific configuration
         ./hosts/darwin/${hostname}
         # Home manager module
-        home-manager.darwinModules.home-manager {
+        home-manager-stable.darwinModules.home-manager {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = {
@@ -184,7 +193,8 @@
         hostname = "nyx";
         username = "apollo";
         system = "x86_64-linux";
-        useUnstable = true; 
+        useUnstable = true;
+        useUnstableHomeManager = true;
       };
       
       # Laptop - tartarus
@@ -193,6 +203,7 @@
         username = "aries";
         system = "x86_64-linux";
         useUnstable = true;
+        useUnstableHomeManager = true;
       };
       
       # Server - aether
@@ -215,7 +226,7 @@
 
     # Home-manager standalone configurations (useful for non-NixOS systems)
     homeConfigurations = {
-      "apollo@nyx" = home-manager.lib.homeManagerConfiguration {
+      "apollo@nyx" = home-manager-unstable.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;
@@ -227,7 +238,7 @@
         ];
       };
 
-      "aries@tartarus" = home-manager.lib.homeManagerConfiguration {
+      "aries@tartarus" = home-manager-unstable.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;
@@ -239,7 +250,7 @@
         ];
       };
 
-      "hermes@aether" = home-manager.lib.homeManagerConfiguration {
+      "hermes@aether" = home-manager-stable.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         extraSpecialArgs = {
           inherit inputs outputs;
@@ -251,7 +262,7 @@
         ];
       };
 
-      "apollo@macbook" = home-manager.lib.homeManagerConfiguration {
+      "apollo@macbook" = home-manager-stable.lib.homeManagerConfiguration {
         pkgs = pkgsFor.aarch64-darwin;
         extraSpecialArgs = {
           inherit inputs outputs;
