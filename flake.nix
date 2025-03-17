@@ -38,7 +38,7 @@
           hmInputs.home-manager.nixosModules.home-manager
           {
             home-manager.users.${username}.imports = [
-              .home/${username}.nix
+              ./home/${username}.nix
               ./home/programs/default.nix
               ./home/terminals/default.nix
               ./home/nixvim/default.nix
