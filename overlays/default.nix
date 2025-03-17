@@ -6,17 +6,17 @@ final: prev: {
   # customPackage = prev.customPackage.override { ... };
   
   # Access to unstable packages
-  unstable = inputs.nixpkgs-unstable.legacyPackages.${prev.system};
+  unstable = inputs.nixpkgs-unstable.legacyPackages.${final.system};
   
   # Example of a package from unstable
   # Use this pattern to get newer versions of packages:
   # firefox = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.firefox;
   # Add this to fix the bemenu module issue
-  bemuFixOverlay = final: prev: {
-    # This creates a dummy version of the bemenu module
-    # that should prevent errors during evaluation
-    homeManagerModules = (prev.homeManagerModules or {}) // {
-      bemenu = { ... }: { config = {}; options = {}; };
-    };
-  };
+  # bemuFixOverlay = final: prev: {
+  #  # This creates a dummy version of the bemenu module
+  #  # that should prevent errors during evaluation
+  #  homeManagerModules = (prev.homeManagerModules or {}) // {
+  #    bemenu = { ... }: { config = {}; options = {}; };
+  #  };
+  # };
 }
