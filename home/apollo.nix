@@ -1,7 +1,18 @@
 # Home configuration for apollo
-{ inputs, outputs, lib, config, pkgs, ... }:
+{ inputs, lib, pkgs, nixvim, self, ... }:
 
 {
+  imports = [
+    # Nixvim Module
+    nixvim.homeManagerModules.nixvim
+    # File Imports
+    ./nixvim/default.nix
+    ./programs/default.nix
+    ./terminals/default.nix
+    ./dotfiles/hypr/default.nix
+    ./dotfiles/rofi/default.nix
+  ];
+
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "apollo";
