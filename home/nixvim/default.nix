@@ -4,7 +4,7 @@
     wl-clipboard
 
     (nixvim.legacyPackages."${pkgs.stdenv.hostPlatform.system}".makeNixvimWithModule {
-      inherit pkgs;
+      inherit nixpkgs;
       module = import ./nvim;
     })
   ];

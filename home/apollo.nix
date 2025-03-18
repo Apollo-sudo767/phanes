@@ -27,7 +27,7 @@
       name = "Vanilla-DMZ";
     };
   };
-
+ 
   # Enable home-manager
   programs.home-manager.enable = true;
 

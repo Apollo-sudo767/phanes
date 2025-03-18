@@ -1,12 +1,13 @@
 {
   clipboard.providers.wl-copy.enable = true;
-  autoCmd = [{
+ 
+  autoCmds = [{
     desc = "Highlight on yank";
     event = "TextYankPost";
     callback.__raw = # lua
-      ''
-        function() vim.highlight.on_yank({ higroup="IncSearch", timeout=250 }) end
-      '';
+      "
+        function() vim.highlight.on_yank({ higroup =:IncSearch, timeout=250 }) end
+      ";
   }];
 
   globals = { mapleader = " "; };

@@ -22,7 +22,18 @@
 
   # Enable home-manager
   programs.home-manager.enable = true;
-
+  
+  home-manager.users.apollo = {
+    programs.nixvim = {
+      enable = true;
+      autoCmd = [
+        {
+          event = [ "FileType" ];
+          callback = "SetCFileTypeSettings()";
+        }
+      ];
+    };
+  };
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 

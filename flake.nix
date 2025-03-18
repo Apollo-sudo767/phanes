@@ -5,10 +5,10 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11"; # or whatever stable version you want
     home-manager-unstable.url = "github:nix-community/home-manager/master";
-    home-manager-stable.url = "github:nix-community/home-manager/release-23.11"; # or whatever stable version you want
+    home-manager-stable.url = "github:nix-community/home-manager/release-23.11";
     stylix.url = "github:danth/stylix";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-    nix-vim = {
+    nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
@@ -18,7 +18,7 @@
     };
   };
 
-  outputs = { self, nixpkgs-unstable, nixpkgs-stable, home-manager-unstable, home-manager-stable, stylix, nix-minecraft, nix-vim, darwin, ... }:
+  outputs = { self, nixpkgs-unstable, nixpkgs-stable, home-manager-unstable, home-manager-stable, stylix, nix-minecraft, nixvim, darwin, ... }:
   let
     systemForHost = { host, pkgs }:
       pkgs.lib.systems.examples.${host.system};
@@ -29,7 +29,6 @@
         modules = modules ++ [
           ./hosts/nixos/configuration.nix
           {
-              # nixpkgs.overlays =  [ (import ./overlays/default.nix) ];
             imports = [
               ./modules/systems/desktop.nix
               stylix.nixosModules.stylix
@@ -37,26 +36,29 @@
           }
           hmInputs.home-manager.nixosModules.home-manager
           {
-            home-manager.users.${username}.imports = [
-              ./home/${username}.nix
-              ./home/programs/default.nix
-              ./home/terminals/default.nix
-              ./home/nixvim/default.nix
-            ];
+            home-manager.users.${username} = {
+              imports = [
+                ./home/${username}.nix
+                ./home/programs/default.nix
+                ./home/terminals/default.nix
+                ./home/nixvim/default.nix 
+              ];
+            };
             home-manager.useGlobalPkgs = true;
           }
           ./hosts/nixos/${hostname}/default.nix
           ./hosts/nixos/${hostname}/hardware-configuration.nix
         ];
         specialArgs = {
-          inherit username;
-          inherit self;
+          inherit username; 
+          inherit self; 
           inherit nixpkgs;
           inherit system;
+          inherit nixvim;
         };
       };
 
-    mkDarwinConfig = { system, modules, username, pkgs, hmInputs }:
+    mkDarwinConfig = { system, modules, username, nixpkgs, hmInputs }:
       darwin.lib.darwinSystem {
         inherit system;
         modules = modules ++ [
@@ -65,19 +67,16 @@
             home-manager.users.${username} = import ./home/${username}.nix;
             home-manager.useGlobalPkgs = true;
             home-manager.users.${username}.imports = [
-              ./home/programs/programs/default.nix
-              ./home/terminals/terminals/default.nix
-              ./home/nixvim/nixvim/default.nix
+              ./home/programs/default.nix
+              ./home/terminals/default.nix
+              ./home/nixvim/default.nix
             ];
           }
           ./hosts/darwin/macbook/default.nix
           ./hosts/darwin/configuration.nix
         ];
         specialArgs = {
-          inherit username;
-          inherit self;
-          inherit nixpkgs-unstable;
-          inherit system;
+          inherit username self nixpkgs-unstable system nixvim;
         };
       };
 
@@ -133,12 +132,11 @@
           home-manager = home-manager-unstable;
           nixpkgs = nixpkgs-unstable;
         };
-          modules = [
-            ./hosts/darwin/configuration.nix
+        modules = [
+          ./hosts/darwin/configuration.nix
         ];
       };
     };
   };
 
 }
-

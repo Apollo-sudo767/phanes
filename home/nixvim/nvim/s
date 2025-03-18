@@ -1,0 +1,29 @@
+{ ... }: {
+  programs.nixvim = {
+    enable = true;
+
+    clipboard.providers.wl-copy.enable = true;
+
+    globals = { mapleader = " "; };
+
+    opts = {
+      number = true;
+      relativenumber = true;
+      shiftwidth = 4;
+      smartindent = true;
+      cursorline = true;
+      scrolloff = 8;
+      title = true;
+      spell = true;
+      conceallevel = 2;
+    };
+
+    autoCmds = [{
+      desc = "Highlight on yank";
+      event = "TextYankPost";
+      callback.__raw = ''
+        function() vim.highlight.on_yank({ higroup = "IncSearch", timeout = 250 }) end
+      '';
+    }];
+  };
+}

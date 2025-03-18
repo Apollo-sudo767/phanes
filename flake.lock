@@ -137,7 +137,7 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
-          "nix-vim",
+          "nixvim",
           "nixpkgs"
         ]
       },
@@ -377,12 +377,12 @@
     "ixx": {
       "inputs": {
         "flake-utils": [
-          "nix-vim",
+          "nixvim",
           "nuschtosSearch",
           "flake-utils"
         ],
         "nixpkgs": [
-          "nix-vim",
+          "nixvim",
           "nuschtosSearch",
           "nixpkgs"
         ]
@@ -419,28 +419,6 @@
       "original": {
         "owner": "Infinidoge",
         "repo": "nix-minecraft",
-        "type": "github"
-      }
-    },
-    "nix-vim": {
-      "inputs": {
-        "flake-parts": "flake-parts",
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ],
-        "nuschtosSearch": "nuschtosSearch"
-      },
-      "locked": {
-        "lastModified": 1741814789,
-        "narHash": "sha256-NbHsnnNwiYUcUaS4z8XK2tYpo3G8NXEKxaKkzMgMiLk=",
-        "owner": "nix-community",
-        "repo": "nixvim",
-        "rev": "33097dcf776d1fad0ff3842096c4e3546312f251",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixvim",
         "type": "github"
       }
     },
@@ -540,6 +518,28 @@
         "type": "github"
       }
     },
+    "nixvim": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ],
+        "nuschtosSearch": "nuschtosSearch"
+      },
+      "locked": {
+        "lastModified": 1741814789,
+        "narHash": "sha256-NbHsnnNwiYUcUaS4z8XK2tYpo3G8NXEKxaKkzMgMiLk=",
+        "owner": "nix-community",
+        "repo": "nixvim",
+        "rev": "33097dcf776d1fad0ff3842096c4e3546312f251",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixvim",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -568,7 +568,7 @@
         "flake-utils": "flake-utils_2",
         "ixx": "ixx",
         "nixpkgs": [
-          "nix-vim",
+          "nixvim",
           "nixpkgs"
         ]
       },
@@ -592,9 +592,9 @@
         "home-manager-stable": "home-manager-stable",
         "home-manager-unstable": "home-manager-unstable",
         "nix-minecraft": "nix-minecraft",
-        "nix-vim": "nix-vim",
         "nixpkgs-stable": "nixpkgs-stable",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "nixvim": "nixvim",
         "stylix": "stylix"
       }
     },
