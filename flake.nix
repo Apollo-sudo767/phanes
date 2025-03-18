@@ -47,6 +47,9 @@
               inherit nixpkgs nixvim self system inputs;
             };
             home-manager.useGlobalPkgs = false;
+            home-manager.extraSpecialArgs = {
+              inherit nixvim self inputs;
+            };
           }
           ./hosts/nixos/${hostname}/default.nix
           ./hosts/nixos/${hostname}/hardware-configuration.nix
