@@ -46,7 +46,6 @@
   console.keyMap = "us";
 
   # Enable sound with pipewire (from your original config)
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -64,7 +63,7 @@
         noto-fonts-emoji
         jetbrains-mono
         fira-code
-        cinzel
+      # cinzel
       ];
     
     enableDefaultPackages = false;

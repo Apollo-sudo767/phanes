@@ -20,13 +20,13 @@
     };
   };
   
-# gtk = {
-  #    enable = true;
-  #  cursorTheme = {
-  #    package = pkgs.vanilla-dmz;
-  #    name = "Vanilla-DMZ";
-  #  };
-  #};
+  gtk = {
+    enable = true;
+    cursorTheme = {
+      package = pkgs.vanilla-dmz;
+      name = "Vanilla-DMZ";
+    };
+  };
  
   # Enable home-manager
   programs.home-manager.enable = true;

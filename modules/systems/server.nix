@@ -31,7 +31,7 @@
         noto-fonts-emoji
       # nerdfonts.jetbrains-mono
       #nerdfonts.fira-code
-        cinzel
+      # cinzel
       ];
     
     enableDefaultPackages = false;
@@ -108,5 +108,4 @@
   # LightDM
   services.xserver.displayManager.lightdm.enable = false;
   #services.flatpak.enable = true; # This will stay as a reminder of my mistakes. I DO REPENT
-  services.udev.packages = with pkgs; [gnome-settings-daemon];
 }

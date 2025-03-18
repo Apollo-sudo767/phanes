@@ -6,7 +6,7 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11"; # or whatever stable version you want
     home-manager-unstable.url = "github:nix-community/home-manager/master";
     home-manager-stable.url = "github:nix-community/home-manager/release-23.11";
-    stylix.url = "github:danth/stylix";
+    # stylix.url = "github:danth/stylix/release-24.11";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -18,7 +18,7 @@
     };
   };
 
-  outputs = { self, nixpkgs-unstable, nixpkgs-stable, home-manager-unstable, home-manager-stable, stylix, nix-minecraft, nixvim, darwin, ... }:
+  outputs = { self, nixpkgs-unstable, nixpkgs-stable, home-manager-unstable, home-manager-stable, nix-minecraft, nixvim, darwin, ... }:
   let
     systemForHost = { host, pkgs }:
       pkgs.lib.systems.examples.${host.system};
@@ -31,7 +31,7 @@
           {
             imports = [
               ./modules/systems/desktop.nix
-              stylix.nixosModules.stylix
+                # stylix.nixosModules.stylix
             ];
           }
           hmInputs.home-manager.nixosModules.home-manager
@@ -41,7 +41,7 @@
                 ./home/${username}.nix
               ];
             };
-            home-manager.useGlobalPkgs = true;
+            home-manager.useGlobalPkgs = false;
           }
           ./hosts/nixos/${hostname}/default.nix
           ./hosts/nixos/${hostname}/hardware-configuration.nix
