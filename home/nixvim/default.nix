@@ -3,7 +3,7 @@
     gnumake
     wl-clipboard
 
-    (nixvim.legacyPackages."${pkgs.stdenv.hostPlatform.system}".makeNixvimWithModule {
+    (nixvim.packages."${pkgs.stdenv.hostPlatform.system}".makeNixvimWithModule {
       inherit nixpkgs;
       module = import ./nvim;
     })

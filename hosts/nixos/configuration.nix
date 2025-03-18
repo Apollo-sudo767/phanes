@@ -46,7 +46,7 @@
   console.keyMap = "us";
 
   # Enable sound with pipewire (from your original config)
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

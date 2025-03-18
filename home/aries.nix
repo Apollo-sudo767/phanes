@@ -23,26 +23,6 @@
   # Enable home-manager
   programs.home-manager.enable = true;
 
-  # Gnome
-  qt = {
-    enable = true;
-    style = {
-      name = pkgs.lib.mkForce "adwaita";
-      package = pkgs.adwaita-qt;
-    };
-  };
-  
-  home-manager.users.apollo = {
-    programs.nixvim = {
-      enable = true;
-      autoCmd = [
-        {
-          event = [ "FileType" ];
-          callback = "SetCFileTypeSettings()";
-        }
-      ];
-   };
-  };
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 

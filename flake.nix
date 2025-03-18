@@ -39,9 +39,6 @@
             home-manager.users.${username} = {
               imports = [
                 ./home/${username}.nix
-                ./home/programs/default.nix
-                ./home/terminals/default.nix
-                ./home/nixvim/default.nix 
               ];
             };
             home-manager.useGlobalPkgs = true;

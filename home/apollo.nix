@@ -8,7 +8,7 @@
   home.homeDirectory = lib.mkDefault (
     if pkgs.stdenv.isDarwin then "/Users/apollo" else "/home/apollo"
   );
-
+  
   # Git configuration
   programs.git = {
     enable = true;
@@ -20,19 +20,19 @@
     };
   };
   
-  gtk = {
-    enable = true;
-    cursorTheme = {
-      package = pkgs.vanilla-dmz;
-      name = "Vanilla-DMZ";
-    };
-  };
+# gtk = {
+  #    enable = true;
+  #  cursorTheme = {
+  #    package = pkgs.vanilla-dmz;
+  #    name = "Vanilla-DMZ";
+  #  };
+  #};
  
   # Enable home-manager
   programs.home-manager.enable = true;
 
   # Nicely reload system units when changing configs
-  systemd.user.startServices = "sd-switch";
+  # systemd.user.startServices = "sd-switch";
 
   # Home Manager state version
   home.stateVersion = "25.05";

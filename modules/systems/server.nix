@@ -99,13 +99,6 @@
     jack.enable = true;
   };
 
-  # Terminal for ssh
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    enableZshIntegration = true;
-  };
-  
   # programs.kitty.enable = true;
   
   programs.starship = {
