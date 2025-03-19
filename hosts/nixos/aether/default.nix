@@ -7,7 +7,7 @@
     # Include hardware configuration when available
     ./hardware-configuration.nix
     ../../../modules/systems/server.nix
-    # ../../../modules/containers/
+    ../../../modules/containers/minecraftserver.nix
   ];
 
   # Define hostname
