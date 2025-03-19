@@ -17,8 +17,9 @@
     fastfetch
     blueman
     waypipe
-    hplip
-    hplipWithPlugin
+    # hplip
+    # hplipWithPlugin
+    sd-switch
   ];
 
   # Bootloader and kernel

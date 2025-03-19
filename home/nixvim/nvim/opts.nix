@@ -6,7 +6,7 @@
     event = "TextYankPost";
     callback.__raw = # lua
       "
-        function() vim.highlight.on_yank({ higroup =:IncSearch, timeout=250 }) end
+        function() vim.highlight.on_yank({ higroup = IncSearch, timeout=250 }) end
       ";
   }];
 

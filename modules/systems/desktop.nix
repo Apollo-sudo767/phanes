@@ -7,7 +7,7 @@
   # Printing
   services.printing = {
     enable = true;
-    drivers = [ pkgs.hplipWithPlugin ];
+    # drivers = [ pkgs.hplipWithPlugin ];
   };
   
   # GDM
@@ -27,6 +27,7 @@
       gamescopeSession.enable = true;
     };
     dconf.enable = true;
+    firefox.enable = true;
   };
  
   # Fix Nix Error?
@@ -111,6 +112,7 @@
       popups = 1.0;
     };
     polarity = "dark";
+    targets.qt.enable = true; 
   };
   
   # XDG Portal

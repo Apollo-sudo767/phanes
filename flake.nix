@@ -139,9 +139,5 @@
         # Add stylix or other modules here if desired
       };
     };
-
-    packages.x86_64-linux = {
-      nixvim = nixvim-unstable.packages.x86_64-linux.nixvim;
-    };
   };
 }
