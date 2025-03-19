@@ -8,7 +8,7 @@
   # Common Packages
   environment.systemPackages = with pkgs; [
     wget
-    neovim
+    # neovim # Removed due to nixvim being on all systems
     curl 
     git 
     sysstat
@@ -85,8 +85,31 @@
   };
   
   # Programs
-  programs.zsh.enable = true;
-
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+    ohMyZsh = {
+      enable = true;
+      plugins = [
+        "git"
+        "z"
+        "sudo"
+        "colored-man-pages"
+        "extract"
+        "history-substring-search"
+      ];
+    };
+    interactiveShellInit = ''
+      export EDITOR=nvim
+      export PATH="$HOME/.local/bin:$PATH"
+      setopt HIST_IGNORE_ALL_DUPS
+      setopt SHARE_HISTORY
+      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+    '';
+  };
+  
   # User Settings
   users.users = {
     apollo = {

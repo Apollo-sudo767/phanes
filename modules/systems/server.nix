@@ -60,7 +60,6 @@
     gzip
     vulkan-tools
     mesa
-    neovim
     vlc
     thunderbird
     ncspot

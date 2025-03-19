@@ -47,7 +47,6 @@
     gzip
     vulkan-tools
     mesa
-    neovim
     protontricks
     vlc
     thunderbird

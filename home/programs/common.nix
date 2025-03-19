@@ -38,7 +38,6 @@
     # db related
     dbeaver-bin
     pgcli
-    neovim
   ];
 
   programs = {

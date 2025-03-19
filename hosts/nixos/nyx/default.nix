@@ -64,7 +64,9 @@
   networking.networkmanager.enable = true;
   networking.defaultGateway = "192.168.1.254";
 
-  # Hardware
+  # Hardware + nvidia
+  services.xserver.videoDrivers = [ "nvidia" ];
+
   hardware = {
     graphics = {
       enable = true;
