@@ -3,6 +3,7 @@
 
 {
   imports = [
+    ../configuration.nix
     # Include hardware configuration when available
     ./hardware-configuration.nix
     ../../../modules/systems/server.nix

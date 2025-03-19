@@ -16,6 +16,7 @@
 
     # Extras
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+
     nixvim-stable = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs-stable";
@@ -25,7 +26,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    # macOS
+    # macOS support
     darwin = {
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -34,7 +35,9 @@
 
   outputs = { self, nixpkgs-unstable, nixpkgs-stable, home-manager-unstable, home-manager-stable, stylix-stable, stylix-unstable, nix-minecraft, nixvim-stable, nixvim-unstable, darwin, ... }@inputs:
   let
-    mkNixosConfig = { system, hostname, username, nixpkgs, hmInputs, nixvim, extraModules ? [] }:
+    getNixvim = hmInputs: if hmInputs.home-manager == home-manager-stable then nixvim-stable else nixvim-unstable;
+
+    mkNixosConfig = { system, hostname, username, nixpkgs, hmInputs, extraModules ? [] }:
       nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
@@ -44,22 +47,27 @@
             home-manager.users.${username} = import ./home/${username}.nix {
               pkgs = nixpkgs.legacyPackages.${system};
               lib = nixpkgs.lib;
-              inherit nixpkgs nixvim self system inputs;
+              inherit nixpkgs self system inputs;
+              nixvim = getNixvim hmInputs;
             };
             home-manager.useGlobalPkgs = false;
+	    home-manager.useUserPackages = true;
+	    home-manager.backupFileExtension = "backup";
             home-manager.extraSpecialArgs = {
-              inherit nixvim self inputs;
+              inherit self inputs;
+              nixvim = getNixvim hmInputs;
             };
           }
           ./hosts/nixos/${hostname}/default.nix
           ./hosts/nixos/${hostname}/hardware-configuration.nix
         ] ++ extraModules;
         specialArgs = {
-          inherit username self nixpkgs system nixvim inputs;
+          inherit username self nixpkgs system inputs;
+          nixvim = getNixvim hmInputs;
         };
       };
 
-    mkDarwinConfig = { system, username, nixpkgs, hmInputs, nixvim, extraModules ? [] }:
+    mkDarwinConfig = { system, username, nixpkgs, hmInputs, extraModules ? [] }:
       darwin.lib.darwinSystem {
         inherit system;
         modules = [
@@ -68,19 +76,42 @@
             home-manager.users.${username} = import ./home/${username}.nix {
               pkgs = nixpkgs.legacyPackages.${system};
               lib = nixpkgs.lib;
-              inherit nixpkgs nixvim self system inputs;
+              inherit nixpkgs self system inputs;
+              nixvim = getNixvim hmInputs;
             };
             home-manager.useGlobalPkgs = true;
+            home-manager.extraSpecialArgs = {
+              inherit self inputs;
+              nixvim = getNixvim hmInputs;
+            };
           }
           ./hosts/darwin/macbook/default.nix
           ./hosts/darwin/configuration.nix
         ] ++ extraModules;
         specialArgs = {
-          inherit username self nixpkgs system nixvim inputs;
+          inherit username self nixpkgs system inputs;
+          nixvim = getNixvim hmInputs;
         };
       };
-  in
-  {
+
+    mkHomeConfig = { username, system, nixpkgs, hmInput, stylixInput ? null }:
+      hmInput.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        extraSpecialArgs = {
+          inherit self inputs;
+          nixvim = getNixvim { home-manager = hmInput; };
+        };
+        modules = (if stylixInput != null then [ stylixInput.homeManagerModules.stylix ] else []) ++ [
+          (import ./home/${username}.nix {
+            pkgs = nixpkgs.legacyPackages.${system};
+            lib = nixpkgs.lib;
+            inherit nixpkgs self system inputs;
+            nixvim = getNixvim { home-manager = hmInput; };
+          })
+        ];
+      };
+
+  in {
     nixosConfigurations = {
       nyx = mkNixosConfig {
         system = "x86_64-linux";
@@ -91,7 +122,6 @@
           home-manager = home-manager-unstable;
           nixpkgs = nixpkgs-unstable;
         };
-        nixvim = nixvim-unstable;
         extraModules = [
           stylix-unstable.nixosModules.stylix
         ];
@@ -106,7 +136,6 @@
           home-manager = home-manager-unstable;
           nixpkgs = nixpkgs-unstable;
         };
-        nixvim = nixvim-unstable;
         extraModules = [
           stylix-unstable.nixosModules.stylix
         ];
@@ -121,8 +150,7 @@
           home-manager = home-manager-stable;
           nixpkgs = nixpkgs-stable;
         };
-        nixvim = nixvim-stable;
-        # No stylix for stable by default (unless desired)
+        # Stylix stable could be added if needed
       };
     };
 
@@ -135,8 +163,32 @@
           home-manager = home-manager-unstable;
           nixpkgs = nixpkgs-unstable;
         };
-        nixvim = nixvim-unstable;
-        # Add stylix or other modules here if desired
+      };
+    };
+
+    homeConfigurations = {
+      apollo = mkHomeConfig {
+        username = "apollo";
+        system = "x86_64-linux";
+        nixpkgs = nixpkgs-unstable;
+        hmInput = home-manager-unstable;
+        stylixInput = stylix-unstable;
+      };
+
+      aries = mkHomeConfig {
+        username = "aries";
+        system = "x86_64-linux";
+        nixpkgs = nixpkgs-unstable;
+        hmInput = home-manager-unstable;
+        stylixInput = stylix-unstable;
+      };
+
+      hermes = mkHomeConfig {
+        username = "hermes";
+        system = "x86_64-linux";
+        nixpkgs = nixpkgs-stable;
+        hmInput = home-manager-stable;
+        stylixInput = stylix-stable;
       };
     };
   };

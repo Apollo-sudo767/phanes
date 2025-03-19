@@ -3,7 +3,8 @@
 
 {
   # Import your hardware configuration but we'll handle this per-host
-  imports = [ 
+  imports = [
+    ../configuration.nix
     ./hardware-configuration.nix
     ../../../modules/systems/desktop.nix
     ../../../modules/DE+WM/gnome.nix

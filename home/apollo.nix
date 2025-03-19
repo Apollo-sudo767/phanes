@@ -1,5 +1,5 @@
 # Home configuration for apollo
-{ inputs, lib, pkgs, nixvim, self, ... }:
+{ inputs, lib, pkgs, self, system, nixvim, ... }:
 
 {
   imports = [
@@ -41,7 +41,7 @@
  
   # Enable home-manager
   programs.home-manager.enable = true;
-
+  
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 

@@ -6,6 +6,7 @@
   # imports = [ ./hardware-configuration.nix ];
   
   imports = [
+    ../configuration.nix
     ./hardware-configuration.nix
     ../../../modules/systems/desktop.nix
     ../../../modules/DE+WM/hyprland.nix
