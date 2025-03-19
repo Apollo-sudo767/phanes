@@ -4,11 +4,11 @@
   ...
 }: {
     # wallpaper, binary file
-  home.file.".config/hypr/hypr1.jpg".source = ../wallpaper/hypr1.jpg;
-  home.file.".config/hypr/hypr2.jpg".source = ../wallpaper/hypr2.jpg;
-  home.file.".config/hypr/Space.png".source = ../wallpaper/Space.png;
-  home.file.".config/hypr/hyprblur.png".source = ../wallpaper/hyprblur.png;
-  home.file.".config/hypr/space13.png".source = ../wallpaper/space13.png;
+  home.file.".config/hypr/hypr1.jpg".source = ../wallpapers/hypr1.jpg;
+  home.file.".config/hypr/hypr2.jpg".source = ../wallpapers/hypr2.jpg;
+  home.file.".config/hypr/Space.png".source = ../wallpapers/Space.png;
+  home.file.".config/hypr/hyprblur.png".source = ../wallpapers/hyprblur.png;
+  home.file.".config/hypr/space13.png".source = ../wallpapers/space13.png;
   home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
   home.file.".config/hypr/hyprlock.conf".source = ./hyprlock.conf;
   home.file.".config/hypr/hypridle.conf".source = ./hypridle.conf;

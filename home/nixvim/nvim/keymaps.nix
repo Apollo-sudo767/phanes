@@ -291,7 +291,7 @@
     end
   '';
 
-  autoCmds = [{
+  autoCmd = [{
     event = [ "FileType" ];
     pattern = [ "*.c" "*.h" ];
     callback = "SetCFileTypeSettings()";

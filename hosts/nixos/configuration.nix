@@ -83,12 +83,40 @@
     };
   };
   
-   users.users.apollo = {
-    # Apollo's authorizedKeys
-    openssh.authorizedKeys.keys = [
-      "SHA256:Ib5d4lKSIShSxgx02cOAsIi+vCeImZoBBMB2Ees3aGc fireshifter767@gmail.com"
-    ];
+  # Programs
+  programs.zsh.enable = true;
+
+  # User Settings
+  users.users = {
+    apollo = {
+      isNormalUser = true;
+      group = "apollo";
+      extraGroups = [ "wheel" "networkmanager" ];
+      shell = pkgs.zsh;
+      openssh.authorizedKeys.keys = [
+        "SHA256:Ib5d4lKSIShSxgx02cOAsIi+vCeImZoBBMB2Ees3aGc fireshifter767@gmail.com"
+      ];
+    };
+    hermes = {
+      isNormalUser = true;
+      group = "hermes";
+      extraGroups = [ "wheel" "networkmanager" ];
+      shell = pkgs.zsh;
+    };
+    aries = {
+      isNormalUser = true;
+      group = "aries";
+      extraGroups = [ "wheel" "networkmanager" ];
+      shell = pkgs.zsh;
+    };
   };
+  
+  users.groups = {
+    apollo = {};
+    hermes = {};
+    aries = {};
+  };
+
   # Nix daemon settings
   nix = {
     settings = {

@@ -1,7 +1,13 @@
 # Home configuration for apollo
-{ inputs, outputs, lib, config, pkgs, ... }:
+{ inputs, lib, pkgs, nixvim, self, ... }:
 
 {
+  imports = [
+    #Nixvim
+    nixvim.homeManagerModules.nixvim
+    ./terminals/default.nix
+    ./nixvim/default.nix
+  ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "hermes";
@@ -24,7 +30,7 @@
   programs.home-manager.enable = true;
   
   # Nicely reload system units when changing configs
-  systemd.user.startServices = "sd-switch";
+  #  systemd.user.startServices = "sd-switch";
 
   # Home Manager state version
   home.stateVersion = "23.11";

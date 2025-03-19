@@ -1,7 +1,7 @@
 {
   clipboard.providers.wl-copy.enable = true;
  
-  autoCmds = [{
+  autoCmd = [{
     desc = "Highlight on yank";
     event = "TextYankPost";
     callback.__raw = # lua
