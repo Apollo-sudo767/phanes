@@ -1,0 +1,63 @@
+{
+  "layer": "top",
+  "position": "bottom",
+  "height": 30,
+  "modules-left": ["window"],
+  "modules-center": ["mpd", "weather"],
+  "modules-right": ["cpu", "memory", "volume", "clock", "tray"],
+  
+  "window": {
+    "max-length": 50
+  },
+
+  "mpd": {
+    "format": "{artist} - {title}",
+    "format-paused": "⏸ {artist} - {title}",
+    "format-stopped": "⏹ Stopped",
+    "interval": 5
+  },
+
+  "weather": {
+    "format": "🌡️ {city}: {temperature}°C {icon}",
+    "interval": 600,
+    "unit": "metric",
+    "openweathermap-api-key": "0ff83815dc926d7d6cbab0013377589e",
+    "openweathermap-city-id": "4407066",
+    "icons": {
+      "01d": "☀️", "01n": "🌙",
+      "02d": "🌤️", "02n": "☁️",
+      "03d": "☁️",  "03n": "☁️",
+      "04d": "☁️",  "04n": "☁️",
+      "09d": "🌧️", "09n": "🌧️",
+      "10d": "🌦️", "10n": "🌧️",
+      "11d": "⛈️", "11n": "⛈️",
+      "13d": "❄️", "13n": "❄️",
+      "50d": "🌫️", "50n": "🌫️"
+    }
+  },
+
+  "cpu": {
+    "format": "CPU: {usage}%",
+    "interval": 5
+  },
+
+  "memory": {
+    "format": "RAM: {used} / {total} GiB",
+    "interval": 5
+  },
+
+  "volume": {
+    "format": "Vol: {volume}%"
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "interval": 60
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  }
+}
+

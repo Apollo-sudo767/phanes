@@ -1,0 +1,7 @@
+[
+  { "label": "lock", "action": "swaylock -f", "keybind": "l" },
+  { "label": "logout", "action": "swaymsg exit", "keybind": "e" },
+  { "label": "suspend", "action": "systemctl suspend", "keybind": "s" },
+  { "label": "reboot", "action": "systemctl reboot", "keybind": "r" },
+  { "label": "shutdown", "action": "systemctl poweroff", "keybind": "p" }
+]

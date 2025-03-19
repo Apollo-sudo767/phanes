@@ -1,11 +1,9 @@
-{pkgs, ...}: {
-  
-    # Stylix
+{ pkgs, ... }: {
   stylix = {
     enable = true;
     image = pkgs.fetchurl {
-      url = "https://live.staticflickr.com/65535/52211883799_9642668157_o_d.png";
-      sha256 = "5bdc52f583da6dc14c26ac3f00d1e5ff45ae7a1da3820d5abf4076b512e18e76";
+      url = "https://w.wallhaven.cc/full/j8/wallhaven-j8y2l5.jpg";
+      sha256 = "2472b185dfa4c49ba68c401ab99b6713ee3e1cd4f4327e92ec02301b6f507aac";
     };
     fonts = {
       monospace = {
@@ -39,6 +37,39 @@
     targets.qt.enable = true; 
   };
 
+  programs = {
+    sway = {
+      enable = true;
+      wrapperFeatures.gtk = true;
+    };
+    waybar = {
+      enable = true;
+       package = pkgs.waybar.overrideAttrs (oldAttrs: {
+         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+       });
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    rofi-wayland
+    wl-clipboard
+    swayidle
+    swaylock-effects
+    swaybg
+    swaynotificationcenter
+    swaylock-effects
+    grim
+    slurp
+    wf-recorder
+    kanshi  # for automatic display profiles
+    xdg-desktop-portal
+    xdg-user-dirs
+    xdg-desktop-portal-wlr
+    adwaita-icon-theme
+    gnome-themes-extra
+    waypipe
+  ];
+  
   xdg = {
     autostart.enable = true;
     portal = {
@@ -46,41 +77,8 @@
       extraPortals = [
         pkgs.xdg-desktop-portal
         pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-wlr
       ];
     };
   };
-  
-  programs = {
-    hyprland = {
-      enable = true;
-      xwayland = {
-        enable = true;
-      };
-    };
-    waybar = {
-      enable = true;
-      package = pkgs.waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      });
-    };
-        
-  };
-
-  environment.systemPackages = with pkgs; [
-    rofi-wayland
-    hyprpicker
-    hyprcursor
-    hyprlock
-    hypridle
-    hyprpaper
-    grim
-    slurp
-    xdg-desktop-portal
-    xdg-user-dirs
-    xdg-desktop-portal-hyprland
-    adwaita-icon-theme
-    gnome-themes-extra
-    waypipe
-  ];
-
 }

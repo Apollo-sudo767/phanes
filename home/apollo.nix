@@ -11,6 +11,7 @@
     ./terminals/default.nix
     ./dotfiles/hypr/default.nix
     ./dotfiles/rofi/default.nix
+    # ./dotfiles/sway/default.nix
   ];
 
   # Home Manager needs a bit of information about you and the

@@ -1,0 +1,52 @@
+* {
+    background: rgba(30, 30, 40, 0.95);
+    border-color: #88c0d0;
+    separatorcolor: #4c566a;
+    text-color: #eceff4;
+    selected-normal-background: rgba(60, 60, 80, 0.8);
+    selected-normal-foreground: #81a1c1;
+    normal-background: rgba(30, 30, 40, 0.95);
+    normal-foreground: #d8dee9;
+    urgent-background: #bf616a;
+    urgent-foreground: #2e3440;
+    active-background: #a3be8c;
+    active-foreground: #2e3440;
+    border: 2px;
+    padding: 20px;
+    font: "JetBrainsMono Nerd Font 12";
+}
+
+window {
+    width: 500px;
+    border: 2px;
+    border-color: #88c0d0;
+    background-color: @background;
+}
+
+mainbox {
+    children: [inputbar, listview];
+    spacing: 10px;
+}
+
+listview {
+    lines: 8;
+    columns: 1;
+    spacing: 5px;
+    cycle: true;
+}
+
+element {
+    padding: 6px;
+    border-radius: 4px;
+}
+
+element selected {
+    background-color: @selected-normal-background;
+    text-color: @selected-normal-foreground;
+}
+
+inputbar {
+    background-color: rgba(40, 40, 50, 0.9);
+    border-radius: 5px;
+    padding: 6px;
+}

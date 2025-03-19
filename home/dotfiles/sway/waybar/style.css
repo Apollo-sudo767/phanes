@@ -1,0 +1,63 @@
+* {
+    border: none;
+    border-radius: 0px;
+    font-family: JetBrainsMono Nerd Font, monospace;
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(15, 15, 20, 0.9);
+    color: #C0C0C0;
+    border-top: 2px solid rgba(120, 120, 120, 0.2);
+}
+
+#window, #mpd, #weather, #cpu, #memory, #volume, #clock, #tray {
+    padding: 0 10px;
+    margin: 2px 4px;
+    background-color: rgba(40, 40, 50, 0.2);
+    border: 1px solid rgba(80, 80, 80, 0.1);
+    border-radius: 4px;
+}
+
+#window {
+    color: #e0e0e0;
+}
+
+#mpd {
+    color: #cccccc;
+}
+#mpd.paused {
+    color: #aaaaff;
+}
+#mpd.stopped {
+    color: #ff7777;
+}
+
+#weather {
+    color: #b0c0d0;
+}
+
+#cpu {
+    color: #9ab0ff;
+}
+
+#memory {
+    color: #c0a0ff;
+}
+
+#volume {
+    color: #d0d0d0;
+}
+
+#clock {
+    color: #e0e0e0;
+}
+
+#tray > .tray-item {
+    padding: 0 5px;
+}
+
+#window, #mpd, #weather, #cpu, #memory, #volume, #clock, #tray {
+    box-shadow: 0 0 5px rgba(200, 200, 255, 0.05);
+}
