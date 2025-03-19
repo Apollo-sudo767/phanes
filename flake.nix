@@ -4,14 +4,14 @@
   inputs = {
     # Core nixpkgs channels
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
 
     # Home Manager channels
     home-manager-unstable.url = "github:nix-community/home-manager/master";
-    home-manager-stable.url = "github:nix-community/home-manager/release-23.11";
+    home-manager-stable.url = "github:nix-community/home-manager/release-24.11";
 
     # Stylix themes
-    stylix-stable.url = "github:danth/stylix/release-23.11";
+    stylix-stable.url = "github:danth/stylix/release-24.11";
     stylix-unstable.url = "github:danth/stylix";
 
     # Extras
@@ -141,7 +141,7 @@
     };
 
     packages.x86_64-linux = {
-      nixvim = nixvim-unstable.packages.x86_64-linux.default;
+      nixvim = nixvim-unstable.packages.x86_64-linux.nixvim;
     };
   };
 }
