@@ -41,16 +41,7 @@
       '';
     };
   };
- 
-  # Common user settings - specific users will be defined per host
-  users.users = {
-    apollo = {
-      isNormalUser = true;
-      description = "Apollo";
-      extraGroups = [ "networkmanager" "wheel" ];
-    };
-  };
-
+  
   # Enable SSH service
   services.openssh = {
     enable = true;
@@ -59,8 +50,24 @@
       PasswordAuthentication = true;
     };
   };
+ 
+  # User Settings
+  users = {
+    groups.apollo = {};
+    users = {
+      apollo ={
+        isNormalUser = true;
+        group = "apollo";
+        extraGroups = [ "wheel" "networkmanager" ];
+        shell = pkgs.zsh;
+        openssh.authorizedKeys.keys = [
+          "SHA256:Ib5d4lKSIShSxgx02cOAsIi+vCeImZoBBMB2Ees3aGc fireshifter767@gmail.com"
+        ];
+      };
+    };
+  };
 
-   # Enable networking
+  # Enable networking
   networking.networkmanager.enable = true;
   networking.defaultGateway = "192.168.1.254";
 

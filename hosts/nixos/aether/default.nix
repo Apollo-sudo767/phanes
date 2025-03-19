@@ -43,10 +43,13 @@
   # Server user configuration
   users.users.hermes = {
     isNormalUser = true;
-    description = "Hermes";
-    extraGroups = [ "wheel" ];
+    group = "hermes";
+    extraGroups = [ "wheel" "networkmanager" ];
+    shell = pkgs.zsh;
   };
- 
+
+  users.groups.hermes = {};
+
   # Version
   system.stateVersion = "24.11";
 

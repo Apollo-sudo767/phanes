@@ -14,10 +14,13 @@
   users.users = {
     aries = {
       isNormalUser = true;
-      description = "Aries";
+      group = "aries";
       extraGroups = [ "networkmanager" "wheel" ];
+      shell = pkgs.zsh;
     };
   };
+  
+  users.groups.aries = {};
 
   # Enable SSH service
   services.openssh = {
