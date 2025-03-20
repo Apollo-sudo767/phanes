@@ -4,9 +4,9 @@
     border: none;
     border-radius: 0px;
     font-family: JetBrainsMono Nerd Font, monospace;
-    font-size: 11px;
+    font-size: 10px; /* slightly smaller */
     font-weight: 500;
-    letter-spacing: 0px;
+    letter-spacing: -0.75px; /* slight negative spacing to tighten numbers/letters */
     min-height: 0;
 }
 
@@ -17,8 +17,8 @@ window#waybar {
 }
 
 #hyprland-workspaces button {
-    padding: 0 4px;
-    margin: 1px;
+    padding: 0 3px;  /* reduced */
+    margin: 0px 1px; /* tighter spacing between buttons */
     background-color: @bg-panel;
     border: 1px solid @border;
     border-radius: 3px;
@@ -37,8 +37,8 @@ window#waybar {
 #volume, 
 #clock, 
 #tray {
-    padding: 0 6px;
-    margin: 1px 2px;
+    padding: 0 4px;   /* reduced from 6px */
+    margin: 0px 1px;  /* tighter margin */
     background-color: @bg-panel;
     border: 1px solid @border;
     border-radius: 3px;
@@ -83,8 +83,9 @@ window#waybar {
 
 #clock {
     color: @text-primary;
+    letter-spacing: -0.7px; /* even tighter for clock numbers */
 }
 
 #tray > .tray-item {
-    padding: 0 4px;
+    padding: 0 3px; /* a little smaller */
 }
