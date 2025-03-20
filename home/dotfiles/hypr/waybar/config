@@ -2,11 +2,11 @@
   "layer": "top",
   "position": "bottom",
   "height": 30,
-  "modules-left": ["wlr/workspaces", "window"],
-  "modules-center": ["mpd", "playerctl", "weather"],
-  "modules-right": ["cpu", "memory", "volume", "clock", "tray"],
+  "modules-left": ["hyprland/workspaces" ],
+  "modules-center": ["mpris", "custom/outtemperature"],
+  "modules-right": ["cpu", "memory", "pulseaudio", "clock", "tray"],
 
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     "format": "{name}",
     "on-click": "activate",
     "sort-by-number": true,
@@ -18,50 +18,25 @@
     }
   },
 
-  "window": {
-    "max-length": 50
-  },
-
-  "mpd": {
-    "format": "{stateIcon} {artist} - {title}",
-    "state-icons": {
-      "playing": "",
-      "paused": "",
-      "stopped": ""
-    },
-    "interval": 5
-  },
-
-  "playerctl": {
-    "player": "spotify,firefox,chromium",
-    "format": "{status_icon} {artist} - {title}",
+  "mpris": {
+    "format": "<span color='#f4d160'>«</span> {status_icon} {artist} - {title} <span color='#f4d160'>»</span>",
     "status-icons": {
-      "Playing": "",
-      "Paused": "",
-      "Stopped": ""
+      "Playing": "<span color='#f4d160'>▶</span>",
+      "Paused": "<span color='#f4a261'>⏸</span>",
+      "Stopped": "<span color='#e76f51'>⏹</span>"
     },
+    "interval": 2,
+    "markup": "pango",
     "on-click": "playerctl play-pause",
     "on-scroll-up": "playerctl next",
     "on-scroll-down": "playerctl previous"
   },
 
-  "weather": {
-    "format": "🌡️ {city}: {temperature}°C {icon}",
-    "interval": 600,
-    "unit": "metric",
-    "openweathermap-api-key": "0ff83815dc926d7d6cbab0013377589e",
-    "openweathermap-city-id": "4407066",
-    "icons": {
-      "01d": "☀️", "01n": "🌙",
-      "02d": "🌤️", "02n": "☁️",
-      "03d": "☁️",  "03n": "☁️",
-      "04d": "☁️",  "04n": "☁️",
-      "09d": "🌧️", "09n": "🌧️",
-      "10d": "🌦️", "10n": "🌧️",
-      "11d": "⛈️", "11n": "⛈️",
-      "13d": "❄️", "13n": "❄️",
-      "50d": "🌫️", "50n": "🌫️"
-    }
+  "custom/outtemperature": {
+     "interval": 1800,
+     "exec": "curl -s 'wttr.in/Saint+Louis?format=%c+%t'",
+     "format": "{}",
+     "tooltip": false
   },
 
   "cpu": {
@@ -74,8 +49,21 @@
     "interval": 5
   },
 
-  "volume": {
-    "format": "Vol: {volume}%"
+  "pulseaudio": {
+     "format": "{icon} {volume}% {format_source}",
+     "format-bluetooth": " {icon} {volume}% {format_source}",
+     "format-bluetooth-muted": "  {icon} {format_source}",
+     "format-muted": "  {format_source}",
+     "format-source": " {volume}%",
+     "format-source-muted": "",
+     "format-icons": {
+        "default": [
+           "",
+           "",
+           ""
+         ]
+     },
+     "on-click": "pavucontrol"
   },
 
   "clock": {

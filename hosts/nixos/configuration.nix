@@ -63,9 +63,8 @@
         noto-fonts-cjk-sans
         noto-fonts-emoji
         jetbrains-mono
-        fira-code
-      # cinzel
-      ];
+        fira-code-nerdfont
+    ];
     
     enableDefaultPackages = false;
     fontconfig.defaultFonts = {
