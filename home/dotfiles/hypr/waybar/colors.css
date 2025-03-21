@@ -1,12 +1,21 @@
-@define-color bg-dark rgba(10, 15, 20, 0.9); /* deep space background */
-@define-color bg-panel rgba(30, 35, 40, 0.3); /* panel background */
-@define-color border rgba(80, 80, 80, 0.1);
+@define-color bg-dark rgba(5, 8, 12, 0.95); /* darker deep space background */
+@define-color bg-panel rgba(20, 22, 28, 0.4); /* darker panel background */
+@define-color border rgba(100, 100, 120, 0.08);
+@define-color text-primary #C0C0C0; /* softer, dimmer moonlight gray */
+@define-color text-secondary #888888; 
 
-@define-color text-primary #DADADA; /* moonlight gray */
-@define-color text-secondary #A0A0A0; 
-@define-color accent-blue #9ab0ff; /* soft moonlit blue */
-@define-color accent-purple #c0a0ff;
-@define-color accent-red #ff7777;
-@define-color accent-yellow #b0c0d0;
+@define-color accent-blue #7a90ff; /* richer, deeper moonlit blue */
+@define-color accent-purple #a987ff; /* deeper cosmic purple */
+@define-color accent-red #ff5c5c;   /* stronger, punchier cosmic red */
+@define-color accent-yellow #aab8c0; /* muted starlight yellow */
+@define-color shadow rgba(120, 120, 160, 0.05);
 
-@define-color shadow rgba(200, 200, 255, 0.06);
+/* Lighter hover tones (muted and less saturated) */
+@define-color accent-red-light #ff7878;
+@define-color accent-blue-light #9caeff;
+@define-color accent-purple-light #c5a7ff;
+@define-color accent-yellow-light #b7c3d0;
+
+/* Cosmic power button purple (deeper tone) */
+@define-color accent-power #8f60ff;
+@define-color accent-power-light #a77eff;

@@ -2,9 +2,18 @@
   "layer": "top",
   "position": "bottom",
   "height": 30,
-  "modules-left": ["hyprland/workspaces" ],
+  "modules-left": ["custom/power", "hyprland/workspaces"],
   "modules-center": ["mpris", "custom/outtemperature"],
   "modules-right": ["cpu", "memory", "pulseaudio", "clock", "tray"],
+
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": "Click: Suspend | Right-click: Shutdown | Middle-click: Reboot",
+    "on-click": "systemctl suspend",
+    "on-click-right": "systemctl poweroff",
+    "on-click-middle": "systemctl reboot",
+    "interval": 0
+  },
 
   "hyprland/workspaces": {
     "format": "{name}",
@@ -33,10 +42,11 @@
   },
 
   "custom/outtemperature": {
-     "interval": 1800,
-     "exec": "curl -s 'wttr.in/Saint+Louis?format=%c+%t'",
-     "format": "{}",
-     "tooltip": false
+    "interval": 1800,
+    "restart-interval": 600,
+    "exec": "bash -c 'w=$(curl -s --max-time 5 \"https://wttr.in?format=%c+%t\"); [ -z \"$w\" ] && echo \"--\" || echo \"$w\"'",
+    "format": "{}",
+    "tooltip": false
   },
 
   "cpu": {
@@ -50,24 +60,25 @@
   },
 
   "pulseaudio": {
-     "format": "{icon} {volume}% {format_source}",
-     "format-bluetooth": " {icon} {volume}% {format_source}",
-     "format-bluetooth-muted": "  {icon} {format_source}",
-     "format-muted": "  {format_source}",
-     "format-source": " {volume}%",
-     "format-source-muted": "",
-     "format-icons": {
-        "default": [
-           "",
-           "",
-           ""
-         ]
-     },
-     "on-click": "pavucontrol"
+    "format": "{icon} {volume}% {format_source}",
+    "format-bluetooth": " {icon} {volume}% {format_source}",
+    "format-bluetooth-muted": "  {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": "",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol"
   },
 
   "clock": {
     "format": "{:%H:%M}",
+    "tooltip-format": "{:%A, %B %d, %Y}",
     "interval": 60
   },
 

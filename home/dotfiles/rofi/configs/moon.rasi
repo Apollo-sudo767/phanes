@@ -1,52 +1,71 @@
 * {
-    background: rgba(30, 30, 40, 0.95);
-    border-color: #88c0d0;
-    separatorcolor: #4c566a;
-    text-color: #eceff4;
-    selected-normal-background: rgba(60, 60, 80, 0.8);
-    selected-normal-foreground: #81a1c1;
-    normal-background: rgba(30, 30, 40, 0.95);
-    normal-foreground: #d8dee9;
-    urgent-background: #bf616a;
-    urgent-foreground: #2e3440;
-    active-background: #a3be8c;
-    active-foreground: #2e3440;
-    border: 2px;
-    padding: 20px;
-    font: "JetBrainsMono Nerd Font 12";
+    font: "SF Mono 12";
+    bg0: rgba(10, 10, 20, 0.85); /* Dark near-black with slight blue tint */
+    bg1: rgba(20, 20, 30, 0.95); /* Slightly lighter gray-blue for input and highlights */
+    fg0: #c8c8cc;                /* Soft light gray text */
+    accent-color: #a4a9ff;       /* Soft cosmic violet-blue accent */
+    urgent-color: #ff5c7a;       /* Soft pinkish-red for urgency */
+    background-color: transparent;
+    text-color: @fg0;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
 }
-
 window {
-    width: 500px;
-    border: 2px;
-    border-color: #88c0d0;
-    background-color: @background;
+    location: center;
+    width: 480;
+    background-color: @bg0;
+    border-radius: 14px;
 }
-
-mainbox {
-    children: [inputbar, listview];
-    spacing: 10px;
+inputbar {
+    spacing: 8px;
+    padding: 10px;
+    background-color: @bg1;
 }
-
+prompt, entry, element-icon, element-text {
+    vertical-align: 0.5;
+}
+prompt {
+    text-color: @accent-color;
+}
+textbox {
+    padding: 8px;
+    background-color: @bg1;
+}
 listview {
-    lines: 8;
+    padding: 6px 0;
+    lines: 6;
     columns: 1;
-    spacing: 5px;
-    cycle: true;
+    fixed-height: false;
 }
-
 element {
     padding: 6px;
-    border-radius: 4px;
+    spacing: 8px;
 }
-
+element normal normal {
+    text-color: @fg0;
+}
+element normal urgent {
+    text-color: @urgent-color;
+}
+element normal active {
+    text-color: @accent-color;
+}
+element alternate active {
+    text-color: @accent-color;
+}
 element selected {
-    background-color: @selected-normal-background;
-    text-color: @selected-normal-foreground;
+    text-color: @bg0;
 }
-
-inputbar {
-    background-color: rgba(40, 40, 50, 0.9);
-    border-radius: 5px;
-    padding: 6px;
+element selected normal, element selected active {
+    background-color: @accent-color;
+}
+element selected urgent {
+    background-color: @urgent-color;
+}
+element-icon {
+    size: 0.85em;
+}
+element-text {
+    text-color: inherit;
 }

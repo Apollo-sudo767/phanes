@@ -1,12 +1,12 @@
 @import "colors.css";
 
 * {
+    font-family: "Firacode Nerd Font", monospace;
     border: none;
-    border-radius: 0px;
-    font-family: JetBrainsMono Nerd Font, monospace;
-    font-size: 10px; /* slightly smaller */
+    border-radius: 4px;
+    font-size: 10px;
     font-weight: 500;
-    letter-spacing: -0.75px; /* slight negative spacing to tighten numbers/letters */
+    letter-spacing: -0.8px;
     min-height: 0;
 }
 
@@ -16,76 +16,68 @@ window#waybar {
     border-top: 2px solid @border;
 }
 
+#custom-power {
+    padding: 2px 10px;
+    margin: 0 6px;
+    background-color: @accent-power;
+    color: @text-primary;
+    border: 1px solid @border;
+    box-shadow: 0 0 3px @shadow;
+    transition: all 0.2s ease-in-out;
+    min-width: 24px;
+    min-height: 24px;
+    border-radius: 6px;
+}
+#custom-power:hover {
+    background-color: @accent-power-light;
+    box-shadow: 0 0 12px @accent-power-light;
+    padding: 6px 14px;
+    border-width: 2px;
+}
+
 #hyprland-workspaces button {
-    padding: 0 3px;  /* reduced */
-    margin: 0px 1px; /* tighter spacing between buttons */
+    padding: 0 6px;
+    margin: 0px 3px;
     background-color: @bg-panel;
     border: 1px solid @border;
-    border-radius: 3px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
 }
-
-#wlr-workspaces button.focused {
+#hyprland-workspaces button.focused {
     background-color: @accent-blue;
+    color: @text-primary;
 }
 
-#window, 
-#mpd, 
 #mpris, 
 #custom-outtemperature, 
 #cpu, 
 #memory, 
-#volume, 
+#pulseaudio, 
 #clock, 
-#tray {
-    padding: 0 4px;   /* reduced from 6px */
-    margin: 0px 1px;  /* tighter margin */
+#tray > .tray-item {
+    padding: 0 6px;
+    margin: 0px 3px;
     background-color: @bg-panel;
     border: 1px solid @border;
-    border-radius: 3px;
-    box-shadow: 0 0 2px @shadow;
-}
-
-#window {
-    color: @text-primary;
-}
-
-#mpd {
-    color: @text-secondary;
-}
-
-#mpd.paused {
-    color: @accent-blue;
-}
-
-#mpd.stopped {
-    color: @accent-red;
+    box-shadow: 0 0 3px @shadow;
+    border-radius: 4px;
 }
 
 #mpris {
     color: @accent-purple;
 }
-
 #custom-outtemperature {
     color: @accent-yellow;
 }
-
 #cpu {
     color: @accent-blue;
 }
-
 #memory {
     color: @accent-purple;
 }
-
 #pulseaudio {
     color: @text-primary;
 }
-
 #clock {
     color: @text-primary;
-    letter-spacing: -0.7px; /* even tighter for clock numbers */
-}
-
-#tray > .tray-item {
-    padding: 0 3px; /* a little smaller */
 }
