@@ -40,14 +40,15 @@
     "on-scroll-up": "playerctl next",
     "on-scroll-down": "playerctl previous"
   },
-
+  
   "custom/outtemperature": {
-    "interval": 1800,
-    "restart-interval": 600,
-    "exec": "bash -c 'w=$(curl -s --max-time 5 \"https://wttr.in?format=%c+%t\"); [ -z \"$w\" ] && echo \"--\" || echo \"$w\"'",
-    "format": "{}",
-    "tooltip": false
+  "interval": 1800,
+  "restart-interval": 600,
+  "exec": "bash -c 'w=$(curl -s --max-time 5 \"https://wttr.in/St.Louis?format=%c+%t\"); [ -z \"$w\" ] && echo \"--\" || echo \"$w\"'",
+  "format": "{}",
+  "tooltip": false
   },
+
 
   "cpu": {
     "format": "CPU: {usage}%",

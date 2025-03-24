@@ -8,15 +8,16 @@ final: prev: {
   # Access to unstable packages
   unstable = inputs.nixpkgs-unstable.legacyPackages.${final.system};
   
-  # Example of a package from unstable
-  # Use this pattern to get newer versions of packages:
-  # firefox = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.firefox;
-  # Add this to fix the bemenu module issue
-  # bemuFixOverlay = final: prev: {
-  #  # This creates a dummy version of the bemenu module
-  #  # that should prevent errors during evaluation
-  #  homeManagerModules = (prev.homeManagerModules or {}) // {
-  #    bemenu = { ... }: { config = {}; options = {}; };
-  #  };
-  # };
+  # Global vosk-api override (always available)
+  vosk-api = final.callPackage ../pkgs/vosk-api { };
+
+  # Conditional override: only on `aether` system
+  factorio-headless = if final.system == "x86_64-linux" && final.hostname == "aether" then
+    final.unstable.factorio-headless.override {
+      # Add override args here if needed (like custom mods)
+      # You can also patch the derivation to include mods in the store.
+    }
+  else
+    prev.factorio-headless;
+  
 }
