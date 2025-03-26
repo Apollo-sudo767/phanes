@@ -2,7 +2,7 @@
 {
   nixpkgs.overlays = [
     (final: prev: {
-      factorio-headless = inputs.unstable.legacyPackages.${prev.system}.factorio-headless.override {
+      factorio-headless = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.factorio-headless.override {
         # Potential overrides — e.g., add default mods or tweak versions
       };
     })
@@ -12,12 +12,10 @@
     enable = true;
     package = pkgs.factorio-headless;
     openFirewall = true;
-    settings = {
-      name = "Phastorio";
-      description = "A modded Space Age server!";
-      visibility = { public = true; };
-      requireUserVerification = false;
-    };
+    description = "Space Age Server for Phas-Gang";
+    public = true;
+    game-name = "Phastorio";
+    game-password = "Giggity";
     autosave-interval = 10;
     saveName = "space-age-save";
   };

@@ -7,6 +7,7 @@
     # Include hardware configuration when available
     ./hardware-configuration.nix
     ../../../modules/systems/server.nix
+    ../../../modules/containers/factorio.nix
     # ../../../modules/containers/minecraftserver.nix # Finish setting up nix-minecraft
   ];
 

@@ -37,7 +37,7 @@
   let
     getNixvim = hmInputs: if hmInputs.home-manager == home-manager-stable then nixvim-stable else nixvim-unstable;
 
-    mkNixosConfig = { system, hostname, username, nixpkgs, hmInputs, extraModules ? [] }:
+    mkNixosConfig = { system, hostname, username, nixpkgs, hmInputs, extraModules ? [], overlays ? [] }:
       nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
@@ -125,6 +125,7 @@
         extraModules = [
           stylix-unstable.nixosModules.stylix
         ];
+        overlays = [];
       };
 
       tartarus = mkNixosConfig {
@@ -139,6 +140,7 @@
         extraModules = [
           stylix-unstable.nixosModules.stylix
         ];
+        overlays = [];
       };
 
       aether = mkNixosConfig {
@@ -150,7 +152,12 @@
           home-manager = home-manager-stable;
           nixpkgs = nixpkgs-stable;
         };
-        # Stylix stable could be added if needed
+          # Stylix stable could be added if needed
+        overlays = [
+          (final: prev: {
+            factorio-server-headless = nixpkgs-unstable.legacyPackages.x86-64-linux.factorio-headless;
+            })
+        ];
       };
     };
 
