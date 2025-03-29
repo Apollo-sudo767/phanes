@@ -69,6 +69,7 @@
     xdg-desktop-portal-gtk
     docker
     kitty
+    steamcmd
   ];
   
   # xdg.portal.enable = true;
