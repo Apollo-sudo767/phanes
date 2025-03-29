@@ -1,9 +1,11 @@
 { config, pkgs, lib, inputs, ... }:
 {
+  nixpkgs.config.allowUnfree = true; # Ensure unfree is enabled globally
+
   nixpkgs.overlays = [
     (final: prev: {
-      factorio-headless = inputs.nixpkgs-unstable.legacyPackages.${prev.system}.factorio-headless.override {
-        # Potential overrides — e.g., add default mods or tweak versions
+      factorio-headless = prev.factorio-headless.override {
+        meta = prev.factorio-headless.meta // { license = lib.licenses.unfree; };
       };
     })
   ];
