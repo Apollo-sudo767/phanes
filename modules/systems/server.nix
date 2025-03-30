@@ -70,6 +70,7 @@
     docker
     kitty
     steamcmd
+    tmux
   ];
   
   # xdg.portal.enable = true;
