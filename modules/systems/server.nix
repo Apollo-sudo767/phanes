@@ -100,7 +100,7 @@
   };
 
   # programs.kitty.enable = true;
-  
+  programs.tmux.enable = true;
   programs.starship = {
     enable = true;
   };
