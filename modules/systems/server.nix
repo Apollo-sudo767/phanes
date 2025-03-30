@@ -70,6 +70,7 @@
     docker
     kitty
     steamcmd
+    steam-run
     tmux
   ];
   
