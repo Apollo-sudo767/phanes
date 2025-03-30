@@ -30,8 +30,8 @@
     defaultGateway = "192.168.1.254";
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 24454 25565 8080 2456 34197 ];
-      allowedUDPPorts = [ 24454 25565 8080 2456 34197 ];
+      allowedTCPPorts = [ 24454 25565 8080 2456 2457 34197 ];
+      allowedUDPPorts = [ 24454 25565 8080 2456 2457 34197 ];
     };
   };
   networking.interfaces.enp3s0.ipv4.addresses = [
