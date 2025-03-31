@@ -8,6 +8,7 @@
     ./hardware-configuration.nix
     ../../../modules/systems/server.nix
     ../../../modules/containers/factorio.nix
+    ../../../modules/containers/joker.nix
     # ../../../modules/containers/minecraftserver.nix # Finish setting up nix-minecraft
   ];
 
