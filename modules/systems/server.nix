@@ -72,6 +72,7 @@
     steamcmd
     steam-run
     tmux
+    jdk21
   ];
   
   # xdg.portal.enable = true;

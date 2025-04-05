@@ -19,7 +19,6 @@
     vesktop
     #PrismLauncher
     prismlauncher
-    minecraft
   ];
 
   programs = {
