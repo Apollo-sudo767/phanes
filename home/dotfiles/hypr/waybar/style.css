@@ -31,7 +31,7 @@ window#waybar {
 #custom-power:hover {
     background-color: @accent-power-light;
     box-shadow: 0 0 12px @accent-power-light;
-    padding: 2px 10px;
+    padding: 6px 14px;
     border-width: 2px;
 }
 
