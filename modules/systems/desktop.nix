@@ -52,6 +52,7 @@
     thunderbird
     ncspot
     spotify
+    lutris
     
     # Style Packages
     cbonsai
