@@ -53,6 +53,8 @@
     ncspot
     spotify
     lutris
+    handbrake
+    davinci-resolve
     
     # Style Packages
     cbonsai
