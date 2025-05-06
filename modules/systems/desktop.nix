@@ -52,7 +52,8 @@
     thunderbird
     ncspot
     spotify
-    lutris
+    ffmpeg_6
+    mumble
     handbrake
     davinci-resolve
     
