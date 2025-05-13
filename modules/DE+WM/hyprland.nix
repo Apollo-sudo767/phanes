@@ -23,6 +23,7 @@
         enable = true;
       };
     };
+
     waybar = {
       enable = true;
       package = pkgs.waybar.overrideAttrs (old: {
@@ -34,6 +35,8 @@
         ];
       });
     };
+
+    eww.
   };
 
   environment.systemPackages = with pkgs; [
@@ -54,6 +57,7 @@
     mpd
     mpc
     ncmpcpp
+    eww
   ];
 
 }

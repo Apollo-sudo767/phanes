@@ -35,7 +35,6 @@
   # System packages
   environment.systemPackages = with pkgs; [
     xfce.thunar
-    nnn
     blueman
     mangohud
     bluez
@@ -49,7 +48,7 @@
     mesa
     protontricks
     vlc
-    thunderbird
+    openrgb
     ncspot
     spotify
     ffmpeg_6
