@@ -71,7 +71,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
   networking.defaultGateway = "192.168.1.254";
-
+  networking.hostName = "nyx";
   # Hardware + nvidia
   services.xserver.videoDrivers = [ "nvidia" ];
 

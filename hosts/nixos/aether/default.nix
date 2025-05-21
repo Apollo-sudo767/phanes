@@ -12,10 +12,6 @@
     # ../../../modules/containers/minecraftserver.nix # Finish setting up nix-minecraft
   ];
 
-  # Define hostname
-  networking.hostName = "aether";
-
-
   # Secure SSH configuration
   services.openssh = {
     enable = true;
@@ -27,6 +23,7 @@
 
   # Networking for server
   networking = {
+    hostName = "aether";
     networkmanager.enable = true;
     defaultGateway = "192.168.1.254";
     firewall = {

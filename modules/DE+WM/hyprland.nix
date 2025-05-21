@@ -35,8 +35,6 @@
         ];
       });
     };
-
-    eww.
   };
 
   environment.systemPackages = with pkgs; [
