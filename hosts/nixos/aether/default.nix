@@ -50,6 +50,6 @@
   users.groups.hermes = {};
 
   # Version
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 
 }

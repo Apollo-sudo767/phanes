@@ -63,9 +63,8 @@
         noto-fonts-cjk-sans
         noto-fonts-emoji
         jetbrains-mono
-        fira-code-nerdfont
+        nerd-fonts.fira-code
     ];
-    
     enableDefaultPackages = false;
     fontconfig.defaultFonts = {
       serif = ["Noto Serif" "Noto Color Emoji"];

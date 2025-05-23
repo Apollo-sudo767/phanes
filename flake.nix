@@ -4,14 +4,14 @@
   inputs = {
     # Core nixpkgs channels
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     # Home Manager channels
     home-manager-unstable.url = "github:nix-community/home-manager/master";
-    home-manager-stable.url = "github:nix-community/home-manager/release-24.11";
+    home-manager-stable.url = "github:nix-community/home-manager/release-25.05";
 
     # Stylix themes
-    stylix-stable.url = "github:danth/stylix/release-24.11";
+    stylix-stable.url = "github:danth/stylix/release-25.05";
     stylix-unstable.url = "github:danth/stylix";
 
     # Extras
@@ -101,7 +101,8 @@
           inherit self inputs;
           nixvim = getNixvim { home-manager = hmInput; };
         };
-        modules = (if stylixInput != null then [ stylixInput.homeManagerModules.stylix ] else []) ++ [
+          modules = (if stylixInput != null then [ stylixInput.homeManagerModules.stylix ] else []) ++ 
+            [
           (import ./home/${username}.nix {
             pkgs = nixpkgs.legacyPackages.${system};
             lib = nixpkgs.lib;
@@ -180,6 +181,7 @@
         nixpkgs = nixpkgs-unstable;
         hmInput = home-manager-unstable;
         stylixInput = stylix-unstable;
+        overlays = [ inputs.hyprpanel.overlay ];
       };
 
       aries = mkHomeConfig {

@@ -35,6 +35,8 @@
       popups = 1.0;
     };
     polarity = "dark";
-    targets.qt.enable = true; 
+    targets = {
+      qt.enable = true;
+    };
   };
 }

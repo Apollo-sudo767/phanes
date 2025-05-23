@@ -55,6 +55,7 @@
     mpd
     mpc
     ncmpcpp
+    ags_1
     eww
   ];
 

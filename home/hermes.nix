@@ -6,7 +6,7 @@
     #Nixvim
     nixvim.homeManagerModules.nixvim
     ./terminals/default.nix
-    ./nixvim/default.nix
+    # ./nixvim/default.nix
   ];
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -33,5 +33,5 @@
   #  systemd.user.startServices = "sd-switch";
 
   # Home Manager state version
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 }

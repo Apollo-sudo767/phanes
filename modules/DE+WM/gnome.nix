@@ -2,9 +2,6 @@
 
 {
   # Stylix
-  imports = [
-    ./stylix/nebula.nix
-  ];
 
   # Enable GNOME without a display manager
   services.xserver = {
