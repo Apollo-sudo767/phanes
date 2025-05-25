@@ -181,7 +181,6 @@
         nixpkgs = nixpkgs-unstable;
         hmInput = home-manager-unstable;
         stylixInput = stylix-unstable;
-        overlays = [ inputs.hyprpanel.overlay ];
       };
 
       aries = mkHomeConfig {
