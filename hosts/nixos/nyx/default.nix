@@ -74,6 +74,12 @@
   networking.hostName = "nyx";
   # Hardware + nvidia
   services.xserver.videoDrivers = [ "nvidia" ];
+ 
+  services.hardware.openrgb = { 
+    enable = true; 
+    package = pkgs.openrgb-with-all-plugins; 
+    motherboard = "amd"; 
+  };
 
   hardware = {
     graphics = {

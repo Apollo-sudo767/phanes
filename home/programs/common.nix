@@ -11,33 +11,15 @@
     # archives
     zip
     unzip
-    p7zip
 
     # utils
     ripgrep
-    yq-go # https://github.com/mikefarah/yq
-    htop
 
     # misc
     libnotify
     wineWowPackages.wayland
     xdg-utils
-    graphviz
-
-    # productivity
-    # obsidian
-
-
-   
-
-    nodejs
-    nodePackages.npm
-    nodePackages.pnpm
-    yarn
-
-    # db related
-    dbeaver-bin
-    pgcli
+    libnotify
   ];
 
   programs = {
@@ -53,7 +35,6 @@
 
     btop.enable = true; # replacement of htop/nmon
     eza.enable = true; # A modern replacement for ‘ls’
-    jq.enable = true; # A lightweight and flexible command-line JSON processor
     ssh.enable = true;
     
 
