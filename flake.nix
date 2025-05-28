@@ -25,7 +25,7 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-
+    
     # macOS support
     darwin = {
       url = "github:lnl7/nix-darwin";
