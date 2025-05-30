@@ -26,6 +26,8 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     
+    # Ashell
+    ashell.url = "github:MalpenZibo/ashell";
     # macOS support
     darwin = {
       url = "github:lnl7/nix-darwin";
@@ -33,7 +35,7 @@
     };
   };
 
-  outputs = { self, nixpkgs-unstable, nixpkgs-stable, home-manager-unstable, home-manager-stable, stylix-stable, stylix-unstable, nix-minecraft, nixvim-stable, nixvim-unstable, darwin, ... }@inputs:
+  outputs = { self, nixpkgs-unstable, nixpkgs-stable, home-manager-unstable, home-manager-stable, stylix-stable, stylix-unstable, nix-minecraft, nixvim-stable, nixvim-unstable, darwin, ashell, ... }@inputs:
   let
     getNixvim = hmInputs: if hmInputs.home-manager == home-manager-stable then nixvim-stable else nixvim-unstable;
 
@@ -113,7 +115,7 @@
       };
 
   in {
-    nixosConfigurations = {
+     nixosConfigurations = {
       nyx = mkNixosConfig {
         system = "x86_64-linux";
         hostname = "nyx";

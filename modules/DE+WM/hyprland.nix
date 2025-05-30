@@ -3,6 +3,7 @@
     # Stylix
   imports = [
     ./stylix/moon.nix
+    ./ashell.nix
   ];
 
   xdg = {
@@ -55,7 +56,7 @@
     mpd
     mpc
     ncmpcpp
-    eww
+    # ashell
   ];
 
 }
