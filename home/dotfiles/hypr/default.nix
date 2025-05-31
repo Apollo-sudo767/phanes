@@ -14,6 +14,7 @@
   home.file.".config/hypr/hypridle.conf".source = ./hypridle.conf;
   home.file.".config/waybar/config".source = ./waybar/config;
   home.file.".config/waybar/colors.css".source = ./waybar/colors.css;
+  home.file.".config/ashell/config.toml".source = ./ashell.toml;
   # home.file.".config/waybar/gruvbox.css".source = ./waybar/gruvbox.css;
   home.file.".config/waybar/style.css".source = ./waybar/style.css;
   # home.file.".config/waybar/style.css.bac".source = ./waybar/style.css.bac;
