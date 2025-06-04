@@ -39,7 +39,7 @@ truncate_title_after_length = 150
 # optional, the following is the default configuration
 [modules]
 # The modules that will be displayed on the left side of the status bar
-left = [ "tray", "workspaces" ]
+left = [ "workspaces", "tray" ]
 # The modules that will be displayed in the center of the status bar
 center = [ "mediaPlayer" ]
 # The modules that will be displayed on the right side of the status bar
@@ -207,7 +207,7 @@ bluetooth_more_cmd = "blueman-manager"
 font_name = "Comic Sans MS"
 # The style of the main bar, possible values are: Islands | Solid | Gradient
 # optional, default Islands
-style = "Islands"
+style = "Solid"
 # The opacity of the main bar, possible values are: 0.0 to 1.0
 # optional, default 1.0
 opacity = 0.7
