@@ -14,9 +14,8 @@ environment {
 // Startup Apps
 spawn-at-startup "xwayland-satellite"
 
-spawn-at-startup "swaybg -i ~/.config/niri/cold.jpg --mode fill"
+spawn-at-startup "swaybg" "-i" "~/.config/niri/cold.jpg" "--mode" "fill"
 
-spawn-at-startup "swayidle -w timeout 300 'swaylock -f -i /home/apollo/.config/niri/cold.jpg' before-sleep 'swaylock -f -i /home/apollo/.config/niri/cold.jpg"
 input {
 
     mod-key "Alt"

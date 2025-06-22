@@ -3,7 +3,7 @@
     enable = true;
     image = pkgs.fetchurl {
       url = "https://github.com/dharmx/walls/blob/main/cold/a_snowy_landscape_with_trees_and_a_light_on_it.jpg";
-      sha256 = "b4156926e58dd5a049c7d00e74dfcd9c0262c1d1264f54efef11aa3bc1c602a5";
+      sha256 = "1982qv0kpahixzpm8kr6s70n40lwrpgp83nhqx4s1mcdwlk6j5dl";
     };
     fonts = {
       monospace = {

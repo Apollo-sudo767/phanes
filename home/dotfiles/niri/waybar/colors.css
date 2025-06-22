@@ -1,0 +1,21 @@
+@define-color bg-dark rgba(26, 42, 58, 0.95); /* Deep desaturated blue, mimicking the darkest parts of the sky/trees */
+@define-color bg-panel rgba(40, 60, 80, 0.4); /* Slightly lighter, more transparent deep blue for panel backgrounds */
+@define-color border rgba(70, 90, 110, 0.1); /* Subtle, slightly desaturated blue-grey border */
+@define-color text-primary #D0D8E0; /* Muted, cool light blue-grey for primary text */
+@define-color text-secondary #A0A8B0; /* Darker, desaturated grey-blue for secondary text */
+
+@define-color accent-blue #5A85A0; /* A desaturated, deeper blue from the image's cooler tones */
+@define-color accent-purple #806090; /* A muted, slightly desaturated purple that complements the cool tones */
+@define-color accent-red #A05050;   /* A very desaturated, almost brownish-red, to fit the cool, muted theme */
+@define-color accent-yellow #C08030; /* The prominent golden-yellow from the illuminated tree in the image */
+@define-color shadow rgba(30, 45, 60, 0.1); /* A darker, subtly blue shadow */
+
+/* Lighter hover tones (adjusted to fit the new palette) */
+@define-color accent-red-light #B06060;
+@define-color accent-blue-light #6A95B0;
+@define-color accent-purple-light #9070A0;
+@define-color accent-yellow-light #D09040;
+
+/* Power button color inspired by a deeper, richer blue/purple from the scene */
+@define-color accent-power #504070; /* A deep, mysterious indigo/purple */
+@define-color accent-power-light #605080; /* Lighter version for hover */

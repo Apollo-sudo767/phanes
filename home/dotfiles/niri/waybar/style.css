@@ -1,0 +1,88 @@
+@import "colors.css";
+
+* {
+    font-family: "Firacode Nerd Font", monospace;
+    border: none;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: -0.8px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent; /* Make the main bar transparent for floating islands */
+    color: @text-primary;
+    /* Removed border-top to enhance floating effect */
+}
+
+#custom-power {
+    padding: 2px 10px;
+    margin: 0 8px; /* Increased margin for island effect */
+    background-color: @accent-power;
+    color: @text-primary;
+    border: 1px solid @border;
+    box-shadow: 0 0 3px @shadow;
+    transition: all 0.2s ease-in-out;
+    min-width: 24px;
+    min-height: 24px;
+    border-radius: 6px;
+}
+#custom-power:hover {
+    background-color: @accent-power-light;
+    box-shadow: 0 0 12px @accent-power-light;
+    /* Set padding and border-width to match default state to prevent size change on hover */
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-width: 1px;
+}
+
+#hyprland-workspaces button {
+    padding: 0 6px;
+    margin: 0px 8px; /* Increased margin for island effect */
+    background-color: @bg-panel;
+    border: 1px solid @border;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+#hyprland-workspaces button.focused {
+    background-color: @accent-blue;
+    color: @text-primary;
+}
+
+#mpris,
+#custom-outtemperature,
+#cpu,
+#memory,
+#pulseaudio,
+#clock,
+#tray > .tray-item {
+    padding: 0 6px;
+    margin: 0px 8px; /* Increased margin for island effect */
+    background-color: @bg-panel;
+    border: 1px solid @border;
+    box-shadow: 0 0 3px @shadow;
+    border-radius: 4px;
+}
+
+#mpris {
+    color: @accent-purple;
+}
+#custom-outtemperature {
+    color: @accent-yellow;
+}
+#cpu {
+    color: @accent-blue;
+}
+#memory {
+    color: @accent-purple;
+}
+#pulseaudio {
+    color: @text-primary;
+}
+#clock {
+    color: @text-primary;
+}
+
