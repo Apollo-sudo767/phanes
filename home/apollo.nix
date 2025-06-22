@@ -9,8 +9,8 @@
     ./nixvim/default.nix
     ./programs/default.nix
     ./terminals/default.nix
-    ./dotfiles/hypr/default.nix
-    ./dotfiles/rofi/default.nix
+    ./dotfiles/niri/default.nix
+    # ./dotfiles/rofi/default.nix
   ];
 
   # Home Manager needs a bit of information about you and the

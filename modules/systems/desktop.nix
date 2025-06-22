@@ -14,7 +14,10 @@
   services.xserver.displayManager.gdm.enable = true;
 
   # Xbox controller support
-  hardware.xone.enable = true;
+  hardware = {
+    xone.enable = true;
+    xpadneo.enable = true;
+  };
 
   # Programs
   programs = {
@@ -42,7 +45,6 @@
     playerctl
     gh
     cmus
-    gnutar
     gzip
     vulkan-tools
     mesa
@@ -51,9 +53,7 @@
     openrgb
     ncspot
     spotify
-    ffmpeg_6
     mumble
-    handbrake
     davinci-resolve
     
     # Style Packages
