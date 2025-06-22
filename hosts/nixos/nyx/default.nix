@@ -9,8 +9,8 @@
     ../configuration.nix
     ./hardware-configuration.nix
     ../../../modules/systems/desktop.nix
-    ../../../modules/DE+WM/hyprland.nix
-    # ../../../modules/DE+WM/sway.nix
+    # ../../../modules/DE+WM/hyprland.nix
+    ../../../modules/DE+WM/niri.nix
   ];
 
   # Bootloader and kernel

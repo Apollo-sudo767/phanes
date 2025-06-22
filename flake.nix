@@ -28,6 +28,13 @@
     
     # Ashell
     ashell.url = "github:MalpenZibo/ashell";
+
+    # Quickshell
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     # macOS support
     darwin = {
       url = "github:lnl7/nix-darwin";
@@ -35,7 +42,7 @@
     };
   };
 
-  outputs = { self, nixpkgs-unstable, nixpkgs-stable, home-manager-unstable, home-manager-stable, stylix-stable, stylix-unstable, nix-minecraft, nixvim-stable, nixvim-unstable, darwin, ashell, ... }@inputs:
+  outputs = { self, nixpkgs-unstable, nixpkgs-stable, home-manager-unstable, home-manager-stable, stylix-stable, stylix-unstable, nix-minecraft, nixvim-stable, nixvim-unstable, darwin, quickshell, ashell, ... }@inputs:
   let
     getNixvim = hmInputs: if hmInputs.home-manager == home-manager-stable then nixvim-stable else nixvim-unstable;
 
@@ -64,7 +71,7 @@
           ./hosts/nixos/${hostname}/hardware-configuration.nix
         ] ++ extraModules;
         specialArgs = {
-          inherit username self nixpkgs system inputs;
+          inherit username self nixpkgs system inputs quickshell ashell;
           nixvim = getNixvim hmInputs;
         };
       };
@@ -129,7 +136,7 @@
           stylix-unstable.nixosModules.stylix
         ];
         overlays = [];
-      };
+     };
 
       tartarus = mkNixosConfig {
         system = "x86_64-linux";
