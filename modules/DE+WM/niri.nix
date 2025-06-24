@@ -12,7 +12,10 @@
       extraPortals = [
         pkgs.xdg-desktop-portal-gnome
         pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-wlr
+        pkgs.xdg-desktop-portal
       ];
+      config.common.default = [ "gnome" ];
     };
   };
 
@@ -36,14 +39,13 @@
   environment.systemPackages = with pkgs; [
     fuzzel
     mako
-    ghostty
     swaybg
     swayidle
     swaylock
     xwayland-satellite
-    ghostty
     xdg-desktop-portal-gtk
     xdg-desktop-portal-gnome
-    alacritty
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal
   ];
 }
