@@ -11,7 +11,7 @@
   };
   
   # GDM
-  services.xserver.displayManager.gdm.enable = true;
+  services.displayManager.gdm.enable = true;
 
   # Xbox controller support
   hardware = {

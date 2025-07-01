@@ -4,8 +4,7 @@
   # Stylix
 
   # Enable GNOME without a display manager
-  services.xserver = {
-    enable = true;
+  services = {
     desktopManager.gnome.enable = true; # Only GNOME itself
   };
 

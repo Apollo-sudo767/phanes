@@ -1,6 +1,13 @@
 { pkgs, ... }: {
    stylix = {
     enable = true;
+    autoEnable = true;
+    cursor = {
+      package = pkgs.vanilla-dmz;
+      name = "Vanilla-DMZ";
+      size = 12;
+    };
+
     image = pkgs.fetchurl {
       url = "https://github.com/dharmx/walls/blob/main/cold/a_snowy_landscape_with_trees_and_a_light_on_it.jpg";
       sha256 = "1982qv0kpahixzpm8kr6s70n40lwrpgp83nhqx4s1mcdwlk6j5dl";
@@ -34,6 +41,9 @@
       popups = 1.0;
     };
     polarity = "dark";
-    targets.qt.enable = true; 
+    targets = {
+      qt.enable = true;
+      gtk.enable = true;
+    };
   };
 }
