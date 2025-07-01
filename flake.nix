@@ -168,7 +168,20 @@
             factorio-server-headless = nixpkgs-unstable.legacyPackages.x86-64-linux.factorio-headless;
             })
         ];
+        };
+      
+      ananke = mkNixosConfig {
+        system = "x86_64-linux";
+        hostname = "ananke";
+        username = "aphrodite";
+        nixpkgs = nixpkgs-unstable;
+        hmInputs = {
+          home-manager = home-manager-unstable;
+          nixpkgs = nixpkgs-unstable;
+        };
+        overlays = [];
       };
+      
     };
 
     darwinConfigurations = {
@@ -206,6 +219,14 @@
         nixpkgs = nixpkgs-stable;
         hmInput = home-manager-stable;
         stylixInput = stylix-stable;
+        };
+
+      aphrodite = mkHomeConfig {
+        username = "aphrodite";
+        system = "x86_64-linux";
+        nixpkgs = nixpkgs-unstable;
+        hmInput = home-manager-unstable;
+        stylixInput = stylix-unstable;
       };
     };
   };

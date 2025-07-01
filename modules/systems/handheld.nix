@@ -1,17 +1,31 @@
 { config, pkgs, lib, username, ... }:
 
 {
+
+  ### SteamOS Section
+
+  # Enable auto-login
+  
+  services = {
+    getty.autologinUser = "steam";
+    xserver = {
+      enable = true;
+      displayManager.startx.enable = true;
+    };
+  }; 
+
+  users.users.steam = {
+    isNormalUser = true;
+    extraGroups = [ "video" "audio" "input" ];
+    packages = with pkgs; [ steam ];
+  };
+
+  ### End of SteamOS Section
+
+
+
   # Trusted users
   nix.settings.trusted-users = [username];
-
-  # Printing
-  services.printing = {
-    enable = true;
-    # drivers = [ pkgs.hplipWithPlugin ];
-  };
-  
-  # GDM
-  services.xserver.displayManager.gdm.enable = true;
 
   # Xbox controller support
   hardware = {
@@ -33,9 +47,7 @@
     firefox.enable = true;
   };
  
-  # Fix Nix Error?
 
-  # System packages
   environment.systemPackages = with pkgs; [
     xfce.thunar
     blueman
@@ -43,34 +55,10 @@
     bluez
     pamixer
     playerctl
-    gh
-    cmus
-    gzip
-    vulkan-tools
-    protontricks
-    vlc
-    openrgb
-    ncspot
-    spotify
-    mumble
-    davinci-resolve
-
-    # Style Packages
-    cbonsai
-    cmatrix
-    pipes
-    asciiquarium
-    cava
-    vitetris
   ];
 
   # Home Manager
   home-manager.backupFileExtension = "backup";
-
-  # Kitty Config
-  environment.etc."kitty/kitty.conf".text = ''
-    background_opacity 0.8
-    '';
 
   # Bluetooth
   hardware.bluetooth.enable = true;

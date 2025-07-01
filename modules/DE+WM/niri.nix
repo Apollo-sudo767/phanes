@@ -40,7 +40,7 @@
     fuzzel
     mako
     swaybg
-    swayidle
+    hypridle
     swaylock
     xwayland-satellite
     xdg-desktop-portal-gtk
