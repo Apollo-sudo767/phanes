@@ -1,91 +1,55 @@
-{ config, pkgs, lib, username, ... }:
+{ config, pkgs, ... }:
 
 {
+  # X11 setup with startx and auto-login
+  services.xserver.enable = true;
+  services.xserver.displayManager.startx.enable = true;
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "steam";
 
-  ### SteamOS Section
+  # Disable screen blanking / power saving
+  services.xserver.serverFlagsSection = ''
+    Option "BlankTime" "0"
+    Option "StandbyTime" "0"
+    Option "SuspendTime" "0"
+    Option "OffTime" "0"
+  '';
 
-  # Enable auto-login
-  
-  services = {
-    getty.autologinUser = "steam";
-    xserver = {
-      enable = true;
-      displayManager.startx.enable = true;
-    };
-  }; 
+  # TTY auto-login (correct syntax)
+  services.getty.autologinUser = "steam";
 
+  # Create a minimal steam user
   users.users.steam = {
     isNormalUser = true;
-    extraGroups = [ "video" "audio" "input" ];
-    packages = with pkgs; [ steam ];
+    extraGroups = [ "wheel" "video" "audio" "input" ];
+    initialPassword = "steam"; # Change securely after first boot
+    createHome = true;
+    home = "/home/steam";
+    shell = pkgs.bash;
   };
 
-  ### End of SteamOS Section
-
-
-
-  # Trusted users
-  nix.settings.trusted-users = [username];
-
-  # Xbox controller support
-  hardware = {
-    xone.enable = true;
-    xpadneo.enable = true;
-  };
-
-  # Programs
-  programs = {
-    gamescope = {
-      enable = true;
-      capSysNice = true;
-    };
-    steam = {
-      enable = true;
-      gamescopeSession.enable = true;
-    };
-    dconf.enable = true;
-    firefox.enable = true;
-  };
- 
-
-  environment.systemPackages = with pkgs; [
-    xfce.thunar
-    blueman
-    mangohud
-    bluez
-    pamixer
-    playerctl
-  ];
-
-  # Home Manager
-  home-manager.backupFileExtension = "backup";
-
-  # Bluetooth
-  hardware.bluetooth.enable = true;
+  # Provide .xinitrc that launches Steam Big Picture mode
+  environment.etc."skel/.xinitrc".text = ''
+    exec ${pkgs.steam}/bin/steam -tenfoot -fullscreen
+  '';
   
-  # Power profiles and policy kit
-  # services.power-profiles-daemon.enable = true; # Battery Daemon replaced by TLP
-  security.polkit.enable = true;
-  
-  # XDG Portal
-  xdg.portal = {
-    enable = true;
-    config.common.defaukt = "*";
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
-    ];
-  };
-
-  # Services
-  services.dbus.packages = [pkgs.gcr];
-  services.geoclue2.enable = true;
+  # Audio
   services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
+    audio.enable = true;
+    wireplumber.enable = true;
   };
-  services.flatpak.enable = true;
+
+  # Steam and dependencies
+  programs.steam.enable = true;
+  hardware.graphics.enable = true;
+  services.blueman.enable = true;
+  hardware.bluetooth.enable = true;
+
+  # Allow unfree (for Steam and possibly GPU drivers)
+  nixpkgs.config.allowUnfree = true;
+
+  # Networking
+  networking.networkmanager.enable = true;
+  systemd.network.wait-online.enable = false;
 }
+

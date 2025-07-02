@@ -10,7 +10,7 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sdhci_acpi" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-intel" "xpad" "hid_nintendo" "hid_playstation" "hid_sony" "hid_steam" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
