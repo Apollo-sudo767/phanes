@@ -333,9 +333,15 @@ window-rule {
 
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
-/-window-rule {
+window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+}
+
+layer-rule {
+    match namespace="kitty"
+
+    opacity 0.8
 }
 
 binds {
@@ -358,7 +364,6 @@ binds {
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-i" "/home/apollo/.config/niri/cold.jpg"; }
     Mod+Shift+Q hotkey-overlay-title="Open a Browser: Firefox" { spawn "firefox"; }
-     
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
