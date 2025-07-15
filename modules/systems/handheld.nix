@@ -6,6 +6,7 @@
   services.xserver.displayManager.startx.enable = true;
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "steam";
+  services.displayManager.gdm.enable = true;
 
   # Disable screen blanking / power saving
   services.xserver.serverFlagsSection = ''
