@@ -3,15 +3,23 @@
 {
   # X11 setup with startx and auto-login
   services.xserver.enable = true;
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "aphrodite";
-  services.displayManager.gdm.enable = true;
+  services.xserver.displayManager.startx.enable = true;
+  services.getty = {
+    autologinUser = "aphrodite";
+  };
 
   # Audio
   services.pipewire = {
     audio.enable = true;
     wireplumber.enable = true;
   };
+  
+  environment.systemPackages = with pkgs; [
+    steam
+    xorg.xinit
+    xterm
+  ];
+  
 
   # Steam and dependencies
   programs.steam.enable = true;
@@ -25,5 +33,6 @@
   # Networking
   networking.networkmanager.enable = true;
   systemd.network.wait-online.enable = false;
+
 }
 
