@@ -6,8 +6,8 @@
     # wallpaper, binary file
   home.file.".config/niri/cold.jpg".source = ./cold.jpg;
   home.file.".config/niri/config.kdl".source = ./config.kdl;
-  home.file.".config/fuzzel/fuzzel.ini".source = ./fuzzel.ak;
-  home.file.".config/mako/config".source = ./mako.ak;
+  home.file.".config/fuzzel/fuzzel.ini".source = ./fuzzel.ap;
+  home.file.".config/mako/config".source = ./mako.ap;
   home.file.".config/hypr/hypridle.conf".source = ./hypridle.conf;
   home.file.".config/swaylock/config".source = ./swaylock.conf;
   home.file.".config/waybar/config".source = ./waybar/config;
