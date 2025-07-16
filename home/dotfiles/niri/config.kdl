@@ -247,7 +247,13 @@ layout {
         // You can also change the shadow color and opacity.
         color "#0007"
     }
-
+    
+    gestures {
+        hot-corners {
+            off
+        }
+    }
+    
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
     // You can think of them as a kind of outer gaps. They are set in logical pixels.
     // Left and right struts will cause the next window to the side to always be visible.
