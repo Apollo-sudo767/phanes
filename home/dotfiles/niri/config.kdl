@@ -11,6 +11,11 @@ environment {
     DISPLAY ":0"
 }
 
+gestures {
+    hot-corners {
+        off
+    }
+}
 // Startup Apps
 spawn-at-startup "xwayland-satellite"
 
@@ -246,12 +251,6 @@ layout {
 
         // You can also change the shadow color and opacity.
         color "#0007"
-    }
-    
-    gestures {
-        hot-corners {
-            off
-        }
     }
     
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
