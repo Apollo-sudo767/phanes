@@ -8,8 +8,9 @@
     # File Imports
     # ./nixvim/default.nix
     ./programs/default.nix
-    ./terminals/default.nix
+    #./terminals/default.nix
     ./dotfiles/niri/default.nix
+    ./dotfiles/ghostty/default.nix
     # ./dotfiles/rofi/default.nix
   ];
 

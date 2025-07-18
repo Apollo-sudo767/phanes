@@ -54,6 +54,7 @@
     spotify
     mumble
     davinci-resolve
+    ghostty
 
     # Style Packages
     cbonsai
@@ -66,11 +67,6 @@
 
   # Home Manager
   home-manager.backupFileExtension = "backup";
-
-  # Kitty Config
-  environment.etc."kitty/kitty.conf".text = ''
-    background_opacity 0.8
-    '';
 
   # Bluetooth
   hardware.bluetooth.enable = true;

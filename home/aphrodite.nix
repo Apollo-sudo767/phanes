@@ -6,8 +6,9 @@
     nixvim.homeManagerModules.nixvim
     # File Imports
     # ./nixvim/default.nix
-    ./terminals/default.nix
+    #./terminals/default.nix
     ./handheld/default.nix
+    ./dotfiles/ghostty/default.nix
   ];
 
   # Home Manager needs a bit of information about you and the

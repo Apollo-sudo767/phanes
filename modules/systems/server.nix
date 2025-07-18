@@ -68,7 +68,7 @@
     xdg-user-dirs
     xdg-desktop-portal-gtk
     docker
-    kitty
+    ghostty
     steamcmd
     steam-run
     tmux
@@ -79,12 +79,6 @@
   # Home Manager
   home-manager.backupFileExtension = "backup";
 
-  # Kitty Config
-  environment.etc."kitty/kitty.conf".text = ''
-    background_opacity 0.8
-    '';
-
-  # Bluetooth
   hardware.bluetooth.enable = true;
   
   # Power profiles and policy kit
@@ -102,7 +96,6 @@
     jack.enable = true;
   };
 
-  # programs.kitty.enable = true;
   programs.tmux.enable = true;
   programs.starship = {
     enable = true;

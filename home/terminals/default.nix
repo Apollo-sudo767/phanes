@@ -17,9 +17,9 @@ in {
     WINEPREFIX = d + "/wine";
 
     # Set default applications
-    EDITOR = "vim";
+    EDITOR = "helix";
     BROWSER = "firefox";
-    TERMINAL = "kitty";
+    TERMINAL = "ghostty";
 
     # Enable scrolling in git diff
     DELTA_PAGER = "less -R";
