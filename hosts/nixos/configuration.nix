@@ -20,6 +20,7 @@
     # hplip
     # hplipWithPlugin
     sd-switch
+    helix
   ];
 
   # Bootloader and kernel
@@ -100,7 +101,7 @@
       ];
     };
     interactiveShellInit = ''
-      export EDITOR=nvim
+      export EDITOR=helix
       export PATH="$HOME/.local/bin:$PATH"
       setopt HIST_IGNORE_ALL_DUPS
       setopt SHARE_HISTORY

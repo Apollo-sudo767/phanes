@@ -6,7 +6,7 @@
     # Nixvim Module
     nixvim.homeManagerModules.nixvim
     # File Imports
-    ./nixvim/default.nix
+    # ./nixvim/default.nix
     ./programs/default.nix
     ./terminals/default.nix
     ./dotfiles/niri/default.nix

@@ -5,7 +5,7 @@
   imports = [
     nixvim.homeManagerModules.nixvim
     # File Imports
-    ./nixvim/default.nix
+    # ./nixvim/default.nix
     ./terminals/default.nix
     ./handheld/default.nix
   ];
