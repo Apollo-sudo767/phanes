@@ -8,7 +8,7 @@
     # ./nixvim/default.nix
     #./terminals/default.nix
     ./handheld/default.nix
-    ./dotfiles/ghostty/default.nix
+    ./dotfiles/cli/default.nix
   ];
 
   # Home Manager needs a bit of information about you and the

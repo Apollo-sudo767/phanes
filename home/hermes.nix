@@ -4,9 +4,9 @@
 {
   imports = [
     #Nixvim
-    nixvim.homeManagerModules.nixvim
+    #nixvim.homeManagerModules.nixvim
     #./terminals/default.nix
-    ./dotfiles/ghostty/default.nix
+    ./dotfiles/cli/default.nix
     # ./nixvim/default.nix
   ];
   # Home Manager needs a bit of information about you and the

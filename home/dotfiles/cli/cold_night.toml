@@ -1,0 +1,42 @@
+name = "cold_night_purple"
+
+
+"ui.background" = "#121626"         # Deep muted indigo (dark night base)
+
+"ui.foreground" = "#d0cde6"         # Soft lavender-white (text base)
+
+"ui.cursor"     = "#e7d7b9"         # Warm light (cursor highlight)
+
+"ui.selection"  = "#2a2d4a"         # Muted dark purple (selection)
+
+"ui.linenr"     = "#6c6f8d"         # Frosty grey-purple (line numbers)
+
+"ui.linenr.selected" = "#d0cde6"
+
+
+"comment"       = "#8b8ebf"         # Muted lavender-blue (comments)
+
+"string"        = "#d7bfae"         # Warm light beige with purple hint (strings)
+
+"keyword"       = "#9e95d2"         # Frosty purple-cyan (keywords)
+
+"function"      = "#e7d7b9"         # Warm golden light (functions)
+
+"constant"      = "#b6aedc"         # Icy pastel purple (constants)
+
+"type"          = "#c6c3dd"         # Pale lavender (types)
+
+"variable"      = "#dedbf0"         # Light lavender-white (variables)
+
+"attribute"     = "#aea9cb"         # Soft grey-purple (attributes)
+
+"namespace"     = "#6b6a9c"         # Deep purple (namespaces)
+
+
+"diagnostic.error" = "#e78b8b"      # Soft muted red
+
+"diagnostic.warning" = "#e0c18b"    # Warm gold
+
+"diagnostic.info" = "#8d9cff"       # Soft periwinkle blue
+
+"diagnostic.hint" = "#a7a6cd"       # Muted lavender gray
