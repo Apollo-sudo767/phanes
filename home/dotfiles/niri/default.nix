@@ -4,7 +4,6 @@
   ...
 }: {
     # wallpaper, binary file
-  home.file.".config/niri/cold.jpg".source = ./cold.jpg;
   home.file.".config/niri/config.kdl".source = ./config.kdl;
   home.file.".config/fuzzel/fuzzel.ini".source = ./fuzzel.ap;
   home.file.".config/mako/config".source = ./mako.ap;

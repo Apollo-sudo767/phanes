@@ -12,8 +12,9 @@
     ./dotfiles/niri/default.nix
     ./dotfiles/cli/default.nix
     # ./dotfiles/rofi/default.nix
+    ./dotfiles/wallpapers/default.nix
   ];
-
+  
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "apollo";

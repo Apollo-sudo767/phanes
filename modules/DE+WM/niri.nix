@@ -2,7 +2,7 @@
 
   # Stylix
   imports = [
-    ./stylix/cold.nix
+    ./stylix/breeze.nix
   ];
 
   xdg = {
