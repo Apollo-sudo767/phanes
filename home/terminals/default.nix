@@ -6,7 +6,6 @@ in {
   imports = [
     ./common.nix
     ./starship.nix
-    ./terminals.nix
   ];
 
   # Add environment variables
