@@ -9,10 +9,9 @@
     enable = true;
     # drivers = [ pkgs.hplipWithPlugin ];
   };
-  
-  # GDM
-  services.displayManager.gdm.enable = true;
 
+  # DM will be on a per WM/DE basis
+  # 
   # Xbox controller support
   hardware = {
     xone.enable = true;

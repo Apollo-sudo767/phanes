@@ -6,8 +6,9 @@
   # Enable GNOME without a display manager
   services = {
     desktopManager.gnome.enable = true; # Only GNOME itself
+    displayManager.gdm.enable = true;
   };
-
+  
   # Use Wayland by default
   environment.sessionVariables.XDG_SESSION_TYPE = "wayland";
 }

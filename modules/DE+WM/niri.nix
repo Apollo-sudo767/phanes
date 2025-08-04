@@ -20,9 +20,7 @@
   };
 
   programs = {
-    niri = {
-      enable = true;
-    };
+   niri.enable = true;
    waybar = {
      enable = true;
      package = pkgs.waybar.overrideAttrs (old: {
@@ -36,6 +34,33 @@
    };
   };
 
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors.niri = {
+      binPath = "${pkgs.niri}/bin/niri";
+      prettyName = "Niri";
+      comment = "Niri compositor session via UWSM";
+    };
+  };
+
+  # Disable if not swaylock startup
+  #services = {
+  #  getty = {
+  #    autoLogin = {
+  #      enable = true;
+  #      user = config.users.users.${username}.name;
+  #    };
+  #  };
+  #};
+
+  # Automatic Launch on tty1
+
+  environment.shellInit = ''
+      if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+         exec uwsm niri
+      fi
+  '';
+  
   environment.systemPackages = with pkgs; [
     fuzzel
     mako
