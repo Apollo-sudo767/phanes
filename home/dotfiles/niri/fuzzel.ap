@@ -9,5 +9,10 @@ width = 22
 background = 2a3744cc
 text = e5e9f0ff
 match = 88c0d0ff
-selection = 3b4252ff
+selection = 3b4252cc
 selection-text = ffffffff
+border = 2a3744cc
+
+[border]
+width=0
+radius=12

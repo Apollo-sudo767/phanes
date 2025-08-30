@@ -17,6 +17,7 @@
 
 background-opacity = 0.5
 window-decoration =  none
+
 # Config syntax crash course
 # ==========================
 # # The config file consists of simple key-value pairs,
