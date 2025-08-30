@@ -3,7 +3,7 @@
   # Stylix
   imports = [
     ./stylix/breeze.nix
-    ./uwsm.nix
+    ./gdm.nix
   ];
 
   xdg = {
