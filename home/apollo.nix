@@ -4,7 +4,7 @@
 {
   imports = [
     # Nixvim Module
-    nixvim.homeManagerModules.nixvim
+    nixvim.homeModules.nixvim
     # File Imports
     # ./nixvim/default.nix
     ./programs/default.nix

@@ -148,11 +148,14 @@
         system = "x86_64-linux";
         hostname = "aether";
         username = "hermes";
-        nixpkgs = nixpkgs-stable;
+        nixpkgs = nixpkgs-unstable;
         hmInputs = {
-          home-manager = home-manager-stable;
-          nixpkgs = nixpkgs-stable;
+          home-manager = home-manager-unstable;
+          nixpkgs = nixpkgs-unstable;
         };
+        extraModules = [
+          stylix-unstable.nixosModules.stylix
+        ];
           # Stylix stable could be added if needed
         overlays = [
           (final: prev: {
