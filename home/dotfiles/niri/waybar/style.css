@@ -1,57 +1,27 @@
+/* 1style.css */
+
 @import "colors.css";
 
 * {
     font-family: "Firacode Nerd Font", monospace;
     border: none;
-    border-radius: 4px;
+    border-radius: 0; /* Changed to 0 for a full-width bar look */
     font-size: 10px;
     font-weight: 500;
-    letter-spacing: -0.8px;
+    letter-spacing: -0.5px; /* Slight adjustment for a cleaner look */
     min-height: 0;
 }
 
 window#waybar {
-    background-color: transparent; /* Make the main bar transparent for floating islands */
+    background-color: @bg-bar; /* Gruvbox dark background */
     color: @text-primary;
-    /* Removed border-top to enhance floating effect */
+    border-bottom: 1px solid @border; /* Subtle bottom border */
+    /* All margin/padding is now managed by individual modules */
 }
 
-#custom-power {
-    padding: 2px 10px;
-    margin: 0 8px; /* Increased margin for island effect */
-    background-color: @accent-power;
-    color: @text-primary;
-    border: 1px solid @border;
-    box-shadow: 0 0 3px @shadow;
-    transition: all 0.2s ease-in-out;
-    min-width: 24px;
-    min-height: 24px;
-    border-radius: 6px;
-}
-#custom-power:hover {
-    background-color: @accent-power-light;
-    box-shadow: 0 0 12px @accent-power-light;
-    /* Set padding and border-width to match default state to prevent size change on hover */
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    border-width: 1px;
-}
-
-#hyprland-workspaces button {
-    padding: 0 6px;
-    margin: 0px 8px; /* Increased margin for island effect */
-    background-color: @bg-panel;
-    border: 1px solid @border;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-}
-#hyprland-workspaces button.focused {
-    background-color: @accent-blue;
-    color: @text-primary;
-}
-
+/* Base style for all modules */
+#custom-power,
+#hyprland-workspaces button,
 #mpris,
 #custom-outtemperature,
 #cpu,
@@ -59,30 +29,69 @@ window#waybar {
 #pulseaudio,
 #clock,
 #tray > .tray-item {
-    padding: 0 6px;
-    margin: 0px 8px; /* Increased margin for island effect */
-    background-color: @bg-panel;
-    border: 1px solid @border;
-    box-shadow: 0 0 3px @shadow;
-    border-radius: 4px;
+    padding: 0 10px; /* Consistent padding */
+    margin: 0;      /* Remove margin between modules */
+    border-radius: 0; /* Match bar style */
+    background-color: @bg-bar; /* Default to bar background */
+    color: @text-primary;
+    transition: background-color 0.2s, color 0.2s;
 }
 
+/* --- Specific Module Styling --- */
+
+/* Power Button */
+#custom-power {
+    background-color: @accent-power;
+    color: @fg0; /* Use a brighter text for contrast */
+}
+#custom-power:hover {
+    background-color: @red; /* Gruvbox red */
+}
+
+/* Workspaces */
+#hyprland-workspaces button {
+    background-color: @bg-bar; /* Default state */
+    padding: 0 10px;
+}
+#hyprland-workspaces button.focused {
+    background-color: @accent-blue; /* Gruvbox blue for focused */
+    color: @fg0;
+}
+#hyprland-workspaces button:hover {
+    background-color: @bg1; /* Slightly lighter background on hover */
+}
+
+/* MPRIS */
 #mpris {
-    color: @accent-purple;
+    background-color: @bg1;
+    color: @accent-purple; /* Gruvbox purple */
 }
+
+/* Temperature */
 #custom-outtemperature {
-    color: @accent-yellow;
+    background-color: @bg1;
+    color: @accent-yellow; /* Gruvbox yellow */
 }
+
+/* System Stats */
 #cpu {
-    color: @accent-blue;
+    background-color: @bg1;
+    color: @accent-blue; /* Gruvbox blue */
 }
 #memory {
-    color: @accent-purple;
-}
-#pulseaudio {
-    color: @text-primary;
-}
-#clock {
-    color: @text-primary;
+    background-color: @bg1;
+    color: @accent-purple; /* Gruvbox purple */
 }
 
+/* Audio */
+#pulseaudio {
+    background-color: @bg1;
+    color: @accent-aqua; /* Gruvbox aqua */
+}
+
+/* Clock and Tray */
+#clock,
+#tray {
+    background-color: @bg1;
+    color: @text-primary;
+}

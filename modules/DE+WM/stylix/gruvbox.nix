@@ -1,4 +1,14 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  # This uses a special Nix function to get the path to the file you want,
+  # relative to the file where the stylix config is being read from.
+  # This path is: go 3 levels up (to the flake root) and then down to the image.
+  gruvboxWallpaper = builtins.path {
+    path = ../../../home/dotfiles/wallpapers/gruvbox.jpg;
+  };
+in
+
+ {
    stylix = {
     enable = true;
     autoEnable = true;
@@ -8,10 +18,7 @@
       size = 12;
     };
 
-    image = pkgs.fetchurl {
-      url = "https://gruvbox-wallpapers.pages.dev/wallpapers/brands/gruvbox-rainbow-nix.png";
-      sha256 = "0cae574c3e5742269b9c625a3d9ee14faeb650abcdae2e1c1136a89de5c2eb1c";
-    };
+    image = gruvboxWallpaper;
     fonts = {
       monospace = {
         package = pkgs.jetbrains-mono;

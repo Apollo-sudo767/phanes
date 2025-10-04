@@ -1,0 +1,28 @@
+/* 1color.css - Gruvbox Dark Soft Palette */
+
+/* Base Colors */
+@define-color bg0-hard #1d2021;
+@define-color bg0-soft #32302f; /* Used for the main bar background */
+@define-color bg1 #3c3836;     /* Used for module backgrounds */
+@define-color fg0 #fbf1c7;     /* Lighter foreground text */
+@define-color fg1 #ebdbb2;     /* Default foreground text */
+@define-color border #504945;  /* Subtle border color */
+
+/* Accent Colors (for modules, focused workspaces, etc.) */
+@define-color red #cc241d;
+@define-color green #98971a;
+@define-color yellow #d79921;
+@define-color blue #458588;
+@define-color purple #b16286;
+@define-color aqua #689d6a;
+@define-color orange #d65d0e;
+
+/* Mapped variables for easy configuration */
+@define-color text-primary @fg1;
+@define-color bg-panel @bg1;
+@define-color bg-bar @bg0-soft;
+@define-color accent-power @red;
+@define-color accent-power-hover @red; /* No distinct light version needed for Gruvbox style */
+@define-color accent-blue @blue;
+@define-color accent-purple @purple;
+@define-color accent-yellow @yellow;

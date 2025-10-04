@@ -2,7 +2,7 @@
 
   # Stylix
   imports = [
-    ./stylix/breeze.nix
+    ./stylix/gruvbox.nix
     ./gdm.nix
   ];
 

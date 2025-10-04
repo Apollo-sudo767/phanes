@@ -1,3 +1,4 @@
+/* 1config */
 {
   "layer": "top",
   "position": "bottom",
@@ -28,11 +29,11 @@
   },
 
   "mpris": {
-    "format": "<span color='#f4d160'>«</span> {status_icon} {artist} - {title} <span color='#f4d160'>»</span>",
+    "format": "<span color='@yellow'>«</span> {status_icon} {artist} - {title} <span color='@yellow'>»</span>",
     "status-icons": {
-      "Playing": "<span color='#f4d160'>▶</span>",
-      "Paused": "<span color='#f4a261'>⏸</span>",
-      "Stopped": "<span color='#e76f51'>⏹</span>"
+      "Playing": "<span color='@green'>▶</span>",
+      "Paused": "<span color='@yellow'>⏸</span>",
+      "Stopped": "<span color='@red'>⏹</span>"
     },
     "interval": 2,
     "markup": "pango",
@@ -40,15 +41,14 @@
     "on-scroll-up": "playerctl next",
     "on-scroll-down": "playerctl previous"
   },
-  
-  "custom/outtemperature": {
-  "interval": 1800,
-  "restart-interval": 600,
-  "exec": "bash -c 'w=$(curl -s --max-time 5 \"https://wttr.in/St.Louis?format=%c+%t\"); [ -z \"$w\" ] && echo \"--\" || echo \"$w\"'",
-  "format": "{}",
-  "tooltip": false
-  },
 
+  "custom/outtemperature": {
+    "interval": 1800,
+    "restart-interval": 600,
+    "exec": "bash -c 'w=$(curl -s --max-time 5 \"https://wttr.in/St.Louis?format=%c+%t\"); [ -z \"$w\" ] && echo \"--\" || echo \"$w\"'",
+    "format": "{}",
+    "tooltip": false
+  },
 
   "cpu": {
     "format": "CPU: {usage}%",
@@ -78,8 +78,8 @@
   },
 
   "clock": {
-    "format": "{:%H:%M}",
-    "tooltip-format": "{:%A, %B %d, %Y}",
+    "format": "󰥔   {:%H:%M  %A, %B %e}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "interval": 60
   },
 
@@ -88,5 +88,3 @@
     "spacing": 10
   }
 }
-
-
