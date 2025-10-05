@@ -11,6 +11,7 @@
   home.file.".config/waybar/config".source = ./waybar/config;
   home.file.".config/waybar/colors.css".source = ./waybar/color.css;
   home.file.".config/waybar/style.css".source = ./waybar/style.css;
+  home.file."/.config/mpd/mpd.conf".source = ./mpd.conf;
   home.file.".config/niri/scripts" = {
     source = ./scripts;
     # copy the scripts directory recursively

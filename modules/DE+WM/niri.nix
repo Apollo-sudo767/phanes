@@ -47,5 +47,5 @@
     xdg-desktop-portal-gnome
     xdg-desktop-portal-wlr
     xdg-desktop-portal
-  ];
+   ];
 }

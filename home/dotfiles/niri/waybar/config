@@ -1,90 +1,86 @@
-/* 1config */
 {
-  "layer": "top",
-  "position": "bottom",
-  "height": 30,
-  "modules-left": ["custom/power", "hyprland/workspaces"],
-  "modules-center": ["mpris", "custom/outtemperature"],
-  "modules-right": ["cpu", "memory", "pulseaudio", "clock", "tray"],
+    "layer": "top",
+    "position": "bottom",
+    "height": 30,
+    "modules-left": ["custom/power", "niri/workspaces"],
+    "modules-center": ["mpris"],
+    "modules-right": ["cpu", "memory", "pulseaudio", "clock", "tray"],
 
-  "custom/power": {
-    "format": "⏻",
-    "tooltip": "Click: Suspend | Right-click: Shutdown | Middle-click: Reboot",
-    "on-click": "systemctl suspend",
-    "on-click-right": "systemctl poweroff",
-    "on-click-middle": "systemctl reboot",
-    "interval": 0
-  },
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": "Click: Suspend | Right-click: Shutdown | Middle-click: Reboot",
+        "on-click": "systemctl suspend",
+        "on-click-right": "systemctl poweroff",
+        "on-click-middle": "systemctl reboot",
+        "interval": 0
+    },
 
-  "hyprland/workspaces": {
-    "format": "{name}",
-    "on-click": "activate",
-    "sort-by-number": true,
-    "disable-scroll": false,
-    "format-icons": {
-      "default": "",
-      "focused": "",
-      "urgent": ""
+    "niri/workspaces": {
+        "format": "{icon}",           // Changed to show the icon, ensuring visibility
+        "on-click": "activate",
+        "sort-by-number": true,
+        "disable-scroll": false,
+        "format-icons": {
+            "default": "",           // Inactive circle
+            "focused": "",           // Focused circle
+            "urgent": ""
+        }
+    },
+
+    "mpris": {
+        "format": " {player}: {stateIcon} {artist} - {title}",
+        "format-paused": "Apollo - Gruvbox", // Use your custom placeholder
+        "format-stopped": "Apollo - Gruvbox", // Use your custom placeholder
+        "player-icons": {
+            "default": "",       // Default media icon
+            "spotify": "",       // Spotify icon
+            "vlc": "辶"
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip": true,
+        "max-length": 50,
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl next"
+    },
+    
+    "cpu": {
+        "format": "CPU: {usage}%",
+        "interval": 5
+    },
+
+    "memory": {
+        "format": "RAM: {used} / {total} GiB",
+        "interval": 5
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": " {icon} {volume}% {format_source}",
+        "format-bluetooth-muted": "  {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "clock": {
+        "format": "󰥔    {:%H:%M  %A, %B %e}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "interval": 60
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
     }
-  },
-
-  "mpris": {
-    "format": "<span color='@yellow'>«</span> {status_icon} {artist} - {title} <span color='@yellow'>»</span>",
-    "status-icons": {
-      "Playing": "<span color='@green'>▶</span>",
-      "Paused": "<span color='@yellow'>⏸</span>",
-      "Stopped": "<span color='@red'>⏹</span>"
-    },
-    "interval": 2,
-    "markup": "pango",
-    "on-click": "playerctl play-pause",
-    "on-scroll-up": "playerctl next",
-    "on-scroll-down": "playerctl previous"
-  },
-
-  "custom/outtemperature": {
-    "interval": 1800,
-    "restart-interval": 600,
-    "exec": "bash -c 'w=$(curl -s --max-time 5 \"https://wttr.in/St.Louis?format=%c+%t\"); [ -z \"$w\" ] && echo \"--\" || echo \"$w\"'",
-    "format": "{}",
-    "tooltip": false
-  },
-
-  "cpu": {
-    "format": "CPU: {usage}%",
-    "interval": 5
-  },
-
-  "memory": {
-    "format": "RAM: {used} / {total} GiB",
-    "interval": 5
-  },
-
-  "pulseaudio": {
-    "format": "{icon} {volume}% {format_source}",
-    "format-bluetooth": " {icon} {volume}% {format_source}",
-    "format-bluetooth-muted": "  {icon} {format_source}",
-    "format-muted": " {format_source}",
-    "format-source": " {volume}%",
-    "format-source-muted": "",
-    "format-icons": {
-      "default": [
-        "",
-        "",
-        ""
-      ]
-    },
-    "on-click": "pavucontrol"
-  },
-
-  "clock": {
-    "format": "󰥔   {:%H:%M  %A, %B %e}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "interval": 60
-  },
-
-  "tray": {
-    "icon-size": 16,
-    "spacing": 10
-  }
 }
