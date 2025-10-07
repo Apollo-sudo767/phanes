@@ -1,0 +1,31 @@
+[main]
+# Use your preferred font and size/padding
+font = JetBrainsMono Nerd Font:size=16
+horizontal-padding = 15
+vertical-padding = 15
+lines = 15
+width = 22
+
+tabs=10
+border-width=0 # Ensuring the border width is zero, as you set below
+inner-padding=10
+outer-padding=20
+notification-timeout=2000
+exit-on-keyboard-focus-loss=true
+layer=overlay
+
+
+[colors]
+# GRUVBOX-INSPIRED COLORS (from our previous discussion)
+# Note: Fuzzel colors are 8-digit RGBA hex (RRGGBBAA)
+background = 1d1d1dFF     # Dark background (No transparency here for solid background)
+text = f0e6d2FF           # Light text color
+match = f0e6d2FF          # Highlighted match in text (light)
+selection = 2a2a2aFF      # Selection background (Slightly lighter dark)
+selection-text = f0e6d2FF # Selection text (light)
+border = f0e6d2FF         # Border color (This color is unused since width=0)
+
+[border]
+width=0          # Explicitly remove the visible border
+radius=0         # <-- FORCES SHARP, BOX-LIKE CORNERS
+selection-radius=0
