@@ -6,6 +6,7 @@
     #Nixvim
     #nixvim.homeManagerModules.nixvim
     #./terminals/default.nix
+    ./programs/default.nix
     ./dotfiles/cli/default.nix
     ./dotfiles/wallpapers/default.nix
     ./dotfiles/nir2/default.nix
