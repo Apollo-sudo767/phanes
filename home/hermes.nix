@@ -9,7 +9,7 @@
     ./programs/default.nix
     ./dotfiles/cli/default.nix
     ./dotfiles/wallpapers/default.nix
-    ./dotfiles/nir2/default.nix
+    ./dotfiles/2niri/default.nix
     # ./nixvim/default.nix
   ];
   # Home Manager needs a bit of information about you and the

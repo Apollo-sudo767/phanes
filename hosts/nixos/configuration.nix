@@ -19,8 +19,8 @@
     waypipe
     # hplip
     # hplipWithPlugin
-    sd-switch
     helix
+    nixd
   ];
 
   # Bootloader and kernel
