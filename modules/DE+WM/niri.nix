@@ -38,6 +38,7 @@
   
   environment.systemPackages = with pkgs; [
     fuzzel
+    xwayland-satellite
     mako
     swaybg
     hypridle

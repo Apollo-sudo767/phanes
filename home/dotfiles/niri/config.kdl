@@ -32,6 +32,7 @@ gestures {
 }
 
 // Startup apps here
+spawn-at-sartup "xwayland-satellite"
 spawn-at-startup "swaybg" "-i" "/home/apollo/.config/wallpapers/niri.jpg"
 spawn-at-startup "hypridle"
 
