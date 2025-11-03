@@ -62,7 +62,7 @@
         material-design-icons
         noto-fonts
         noto-fonts-cjk-sans
-        noto-fonts-emoji
+        noto-fonts-color-emoji
         jetbrains-mono
         nerd-fonts.fira-code
     ];

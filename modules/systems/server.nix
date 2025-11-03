@@ -28,7 +28,7 @@
         material-design-icons
         noto-fonts
         noto-fonts-cjk-sans
-        noto-fonts-emoji
+        noto-fonts-color-emoji
       # nerdfonts.jetbrains-mono
       #nerdfonts.fira-code
       # cinzel
