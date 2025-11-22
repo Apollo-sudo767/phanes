@@ -27,7 +27,7 @@
     enable = true;
     userName = "Apollo-sudo767";
     userEmail = "blured767@gmail.com";  # Replace with your actual email
-    extraConfig = {
+    settings = {
       init.defaultBranch = "main";
       pull.rebase = true;
     };
