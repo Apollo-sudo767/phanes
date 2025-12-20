@@ -27,7 +27,7 @@
     enable = true;
     userName = "Apollo-sudo767";
     userEmail = "blured767@gmail.com";  # Replace with your actual email
-    settings = {
+    extraConfig = {
       init.defaultBranch = "main";
       pull.rebase = true;
     };
@@ -48,5 +48,5 @@
   systemd.user.startServices = "sd-switch";
 
   # Home Manager state version
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 }

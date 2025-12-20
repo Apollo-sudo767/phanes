@@ -101,7 +101,7 @@
           inherit self inputs;
           nixvim = getNixvim { home-manager = hmInput; };
         };
-          modules = (if stylixInput != null then [ stylixInput.homeModules.stylix ] else []) ++ 
+          modules = (if stylixInput != null then [ stylixInput.homeManagerModules.stylix ] else []) ++ 
             [
           (import ./home/${username}.nix {
             pkgs = nixpkgs.legacyPackages.${system};
