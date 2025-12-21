@@ -25,11 +25,15 @@
   # Git configuration
   programs.git = {
     enable = true;
-    userName = "Apollo-sudo767";
-    userEmail = "blured767@gmail.com";  # Replace with your actual email
-    extraConfig = {
-      init.defaultBranch = "main";
-      pull.rebase = true;
+    settings = {
+      user = {
+        name = "Apollo-sudo767";
+        email = "blured767@gmail.com";
+      };
+      extraConfig = {
+        init.defaultBranch = "main";
+        pull.rebase = true;
+      };
     };
   };
   
