@@ -30,6 +30,7 @@
     };
     dconf.enable = true;
     firefox.enable = true;
+    k3b.enable = true;
   };
  
   # Fix Nix Error?
@@ -62,6 +63,7 @@
     asciiquarium
     cava
     vitetris
+    kdePackages.k3b
   ];
 
   # Home Manager
