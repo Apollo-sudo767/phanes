@@ -20,6 +20,7 @@ window#waybar {
 /* Base style for all modules */
 #custom-power,
 #niri-workspaces button,  /* Niri Workspaces */
+#custom-branding,
 #mpris,
 #custom-outtemperature,
 #cpu,
@@ -61,6 +62,13 @@ window#waybar {
 #niri-workspaces button.urgent {
     background-color: @red; /* Gruvbox red for urgent/notification */
     color: @fg0;
+}
+
+/* --- Apollo - Gruvbox --- */
+#custom-branding {
+    background-color: @bg1;
+    color: @accent-purple;
+    font-weight: bold;
 }
 
 /* --- MPD MODULE STYLING --- */

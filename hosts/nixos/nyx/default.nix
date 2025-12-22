@@ -59,7 +59,7 @@
       apollo ={
         isNormalUser = true;
         group = "apollo";
-        extraGroups = [ "wheel" "networkmanager" ];
+        extraGroups = [ "wheel" "networkmanager" "cdrom" "optical" ];
         shell = pkgs.zsh;
         openssh.authorizedKeys.keys = [
           "SHA256:Ib5d4lKSIShSxgx02cOAsIi+vCeImZoBBMB2Ees3aGc fireshifter767@gmail.com"
@@ -92,8 +92,7 @@
         nvidia-vaapi-driver
         mesa
         vulkan-tools
-        vulkan-validation-layers
-        #  pkgsi686Linux.vulkan-loader
+        vulkan-validation-layers        #  pkgsi686Linux.vulkan-loader
       ];
       extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
       # setLdLibraryPath = true;

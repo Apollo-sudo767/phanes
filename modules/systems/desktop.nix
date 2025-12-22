@@ -56,6 +56,12 @@
     davinci-resolve
     ghostty
 
+    # k3b
+    kdePackages.k3b
+    cdrtools
+    cdrdao
+    dvdplusrwtools
+
     # Style Packages
     cbonsai
     cmatrix
@@ -63,7 +69,6 @@
     asciiquarium
     cava
     vitetris
-    kdePackages.k3b
   ];
 
   # Home Manager
@@ -97,4 +102,5 @@
     jack.enable = true;
   };
   services.flatpak.enable = true;
+  services.udisks2.enable = true;
 }

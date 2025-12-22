@@ -3,7 +3,7 @@
     "position": "bottom",
     "height": 30,
     "modules-left": ["custom/power", "niri/workspaces"],
-    "modules-center": ["mpris"],
+    "modules-center": [ "custom/branding", "mpris"],
     "modules-right": ["cpu", "memory", "pulseaudio", "clock", "tray"],
 
     "custom/power": {
@@ -27,25 +27,32 @@
         }
     },
 
-    "mpris": {
-        "format": " {player}: {stateIcon} {artist} - {title}",
-        "format-paused": "Apollo - Gruvbox", // Use your custom placeholder
-        "format-stopped": "Apollo - Gruvbox", // Use your custom placeholder
+   "custom/branding": {
+       "format": "Apollo - Gruvbox",
+       "tooltip": false
+   },
+
+   "mpris": {
+        "format": "| {player_icon} {artist} - {title}",
+        "format-paused": "Apollo - Gruvbox | {status_icon} <i>{artist} - {title}</i>",
+        "format-stopped": "Apollo - Gruvbox",
         "player-icons": {
-            "default": "",       // Default media icon
-            "spotify": "",       // Spotify icon
-            "vlc": "辶"
+            "default": "",
+            "spotify": "",
+            "ncspot": "",
+            "vlc": "󰕼",
+            "cmus": "󰓠"
         },
-        "state-icons": {
+        "status-icons": {
             "paused": "",
             "playing": ""
         },
         "tooltip": true,
-        "max-length": 50,
+        "max-length": 60,
         "on-click": "playerctl play-pause",
         "on-click-right": "playerctl next"
     },
-    
+        
     "cpu": {
         "format": "CPU: {usage}%",
         "interval": 5
