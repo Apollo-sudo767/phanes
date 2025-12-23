@@ -20,6 +20,7 @@ window#waybar {
 /* Base style for all modules */
 #custom-power,
 #niri-workspaces button,  /* Niri Workspaces */
+#niri-window
 #custom-branding,
 #mpris,
 #custom-outtemperature,
@@ -64,6 +65,13 @@ window#waybar {
     color: @fg0;
 }
 
+/* Window (Niri) */
+#niri-window {
+    background-color: @bg1;
+    color: @green;
+    font-weight: bold;
+}
+
 /* --- Apollo - Gruvbox --- */
 #custom-branding {
     background-color: @bg1;
@@ -84,10 +92,6 @@ window#waybar {
 }
 #mpris.paused {
     color: @yellow; /* Gruvbox yellow for 'Paused' */
-}
-#mpris.stopped {
-    /* Uses default text-primary color from the base selector */
-    color: @text-primary;
 }
 #mpris.disconnected {
     background-color: @red;

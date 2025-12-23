@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "bottom",
     "height": 30,
-    "modules-left": ["custom/power", "niri/workspaces"],
+    "modules-left": ["custom/power", "niri/workspaces", "niri/window"],
     "modules-center": [ "custom/branding", "mpris"],
     "modules-right": ["cpu", "memory", "pulseaudio", "clock", "tray"],
 
@@ -27,15 +27,19 @@
         }
     },
 
+   "niri/window": {
+        "format": "{title}",
+        "icon-size": 18,
+   },
+
    "custom/branding": {
-       "format": "Apollo - Gruvbox",
+       "format": " Apollo - Gruvbox ",
        "tooltip": false
    },
 
    "mpris": {
-        "format": "| {player_icon} {artist} - {title}",
-        "format-paused": "Apollo - Gruvbox | {status_icon} <i>{artist} - {title}</i>",
-        "format-stopped": "Apollo - Gruvbox",
+        "format": "|  {player_icon} {artist} - {title}",
+        "format-paused": "|  {status_icon} <i>{artist} - {title}</i>",
         "player-icons": {
             "default": "",
             "spotify": "",
@@ -59,7 +63,7 @@
     },
 
     "memory": {
-        "format": "RAM: {used} / {total} GiB",
+        "format": "Ram: {}%",
         "interval": 5
     },
 
