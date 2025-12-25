@@ -55,6 +55,8 @@
     mumble
     davinci-resolve
     ghostty
+    kdePackages.okular
+    yt-dlp
 
     # k3b
     kdePackages.k3b
