@@ -5,6 +5,7 @@ let
   # This path is: go 3 levels up (to the flake root) and then down to the image.
   gruvboxWallpaper = builtins.path {
     path = ../../../home/dotfiles/wallpapers/gruvbox.jpg;
+  limineBackground = ../../../home/dotfiles/wallpapers/minimalSolarSystem.jpg
   };
 in
 
@@ -51,6 +52,27 @@ in
     targets = {
       qt.enable = true;
       gtk.enable = true;
+
+      #Bootloader & Launch Process
+      limine.enable = false;
+      plymouth = {
+        enable = true;
+        logoAnimated = true;
+        logo = "${pkgs.nixos-icons}/share/icons/hicolor/48x48/apps/nix-snowflake-white.png";
+      };
+    };
+  };
+
+  # Bootloader Specific Section
+  boot = {
+    plymouth.enable = true;i
+    loader.limine = {
+      additionaFiles."splash.png" = limineBackground;
+      extraConfig = ''
+        TERM_BACKDROP=boot://splash.png
+        TERM_BACKDROP_LAYOUT=stretch
+        TERM_BACKGROUND=00000000
+      '';
     };
   };
 }

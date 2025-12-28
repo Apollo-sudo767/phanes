@@ -30,8 +30,15 @@
     
     # Boot loader configuration (from your original config)
     loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = false;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+      limine = {
+        enable = true;
+        efiSupport = true;
+      };
     };
   };
 
