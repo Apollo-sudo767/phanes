@@ -19,7 +19,7 @@
 
       :Windows
         protocl: efi_chainload
-        image_path: boot://efi/EFI/Microsoft/Boot/bootmgfw.efi
+        image_path=hdd(1:1):/EFI/Microsoft/Boot/bootmgfw.efi
 
       :EDK2 UEFI Shell
         protocol: efi_chainload

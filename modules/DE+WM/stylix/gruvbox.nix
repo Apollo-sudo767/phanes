@@ -5,7 +5,9 @@ let
   # This path is: go 3 levels up (to the flake root) and then down to the image.
   gruvboxWallpaper = builtins.path {
     path = ../../../home/dotfiles/wallpapers/gruvbox.jpg;
-  limineBackground = ../../../home/dotfiles/wallpapers/minimalSolarSystem.jpg
+  };
+  limineBackground = builtins.path {
+    path = ../../../home/dotfiles/wallpapers/boot.png;
   };
 in
 
@@ -20,6 +22,7 @@ in
     };
 
     image = gruvboxWallpaper;
+    imageScalingMode = "fill";
     fonts = {
       monospace = {
         package = pkgs.jetbrains-mono;
@@ -65,11 +68,11 @@ in
 
   # Bootloader Specific Section
   boot = {
-    plymouth.enable = true;i
+    plymouth.enable = true;
     loader.limine = {
-      additionaFiles."splash.png" = limineBackground;
+      additionalFiles."boot.png" = limineBackground;
       extraConfig = ''
-        TERM_BACKDROP=boot://splash.png
+        TERM_BACKDROP=boot://background.png
         TERM_BACKDROP_LAYOUT=stretch
         TERM_BACKGROUND=00000000
       '';

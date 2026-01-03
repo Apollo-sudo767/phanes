@@ -3,7 +3,7 @@
   # Stylix
   imports = [
     ./stylix/gruvbox.nix
-    ./gdm.nix
+    ./tuigreet.nix
   ];
 
   xdg = {

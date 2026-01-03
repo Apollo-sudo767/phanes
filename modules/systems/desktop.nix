@@ -30,14 +30,13 @@
     };
     dconf.enable = true;
     firefox.enable = true;
-    k3b.enable = true;
   };
  
   # Fix Nix Error?
 
   # System packages
   environment.systemPackages = with pkgs; [
-    xfce.thunar
+    thunar
     blueman
     mangohud
     bluez
@@ -58,12 +57,7 @@
     kdePackages.okular
     yt-dlp
 
-    # k3b
-    kdePackages.k3b
-    cdrtools
-    cdrdao
-    dvdplusrwtools
-
+   
     # Style Packages
     cbonsai
     cmatrix
