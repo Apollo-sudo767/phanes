@@ -6,7 +6,7 @@
     ../configuration.nix
     # Include hardware configuration when available
     ./hardware-configuration.nix
-    ../../../modules/DE+WM/niri.nix
+    ../../../modules/gui/wm/niri.nix
     ../../../modules/systems/desktop.nix
     # ../../../modules/systems/server.nix
     # ../../../modules/containers/factorio.nix

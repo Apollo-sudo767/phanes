@@ -2,8 +2,9 @@
 
   # Stylix
   imports = [
-    ./stylix/gruvbox.nix
-    ./tuigreet.nix
+    ../stylix/gruvbox.nix
+    ../dm/tuigreet.nix
+    ../boot/limine.nix
   ];
 
   xdg = {

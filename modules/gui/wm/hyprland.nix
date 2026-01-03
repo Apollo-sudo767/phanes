@@ -2,8 +2,7 @@
   
     # Stylix
   imports = [
-    ./stylix/moon.nix
-    ./ashell.nix
+    ../stylix/moon.nix
   ];
 
   xdg = {
