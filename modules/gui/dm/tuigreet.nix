@@ -6,7 +6,7 @@
     settings = {
       default_session = {
         # Using niri-session ensures systemd integration and environment variables are set
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
         user = "greeter";
       };
     };

@@ -7,7 +7,7 @@
     ../configuration.nix
     ./hardware-configuration.nix
     ../../../modules/systems/desktop.nix
-    ../../../modules/DE+WM/gnome.nix
+    ../../../modules/gui/wm/gnome.nix
   ];
 
   # Common user settings - specific users will be defined per host

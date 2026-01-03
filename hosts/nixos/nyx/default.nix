@@ -14,17 +14,16 @@
   ];
 
   # Bootloader and kernel
-  boot.loader.limine.extraConfig = ''
+  boot.loader.limine = {
+    extraConfig = ''
       timeout: 5
-
-      :Windows
-        protocl: efi_chainload
-        image_path=hdd(1:1):/EFI/Microsoft/Boot/bootmgfw.efi
-
-      :EDK2 UEFI Shell
+    '';
+    extraEntries = ''
+      /Windows
         protocol: efi_chainload
-        image_path: boot://efi/efi/shell.efi
-  '';
+        image_path: guid(46ad5651-bf48-40a1-8a92-a8a1c377e009):/EFI/Microsoft/Boot/bootmgfw.efi
+    '';
+  };
   
   # Enable SSH service
   services.openssh = {
