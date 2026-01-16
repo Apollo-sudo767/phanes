@@ -57,6 +57,7 @@
     yt-dlp
     tauon
     kew
+    spotdl
 
    
     # Style Packages
