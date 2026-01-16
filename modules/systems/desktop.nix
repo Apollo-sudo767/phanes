@@ -43,7 +43,6 @@
     pamixer
     playerctl
     gh
-    cmus
     gzip
     vulkan-tools
     protontricks
@@ -56,6 +55,8 @@
     ghostty
     kdePackages.okular
     yt-dlp
+    tauon
+    kew
 
    
     # Style Packages
