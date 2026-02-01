@@ -1,17 +1,30 @@
-{ config, pkgs, lib, username, ... }:
+{ config, pkgs, lib, username, inputs, system, ... }:
 
+let
+  # The 0xc000022070 flake uses 'extraPolicies' for its overrides
+  myZen = inputs.zen-browser.packages."${system}".default.override {
+    extraPolicies = {
+      DisableTelemetry = true;
+      ExtensionSettings = {
+        "uBlock0@raymondhill.net" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+          installation_mode = "force_installed";
+        };
+        "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+          installation_mode = "force_installed";
+        };
+      };
+    };
+  };
+in
 {
   # Trusted users
   nix.settings.trusted-users = [username];
 
   # Printing
-  services.printing = {
-    enable = true;
-    # drivers = [ pkgs.hplipWithPlugin ];
-  };
+  services.printing.enable = true;
 
-  # DM will be on a per WM/DE basis
-  # 
   # Xbox controller support
   hardware = {
     xone.enable = true;
@@ -31,11 +44,19 @@
     dconf.enable = true;
     firefox.enable = true;
   };
- 
-  # Fix Nix Error?
 
   # System packages
   environment.systemPackages = with pkgs; [
+    # Custom Zen
+    myZen
+
+    # Bitwarden Stack
+    bitwarden-desktop   # The Desktop GUI
+    bitwarden-cli       # Official CLI (bw)
+    rbw                 # Better CLI for NixOS (handles sessions nicely)
+    pinentry-gnome3     # Required for rbw/bitwarden to ask for passwords
+
+    # File & System
     thunar
     blueman
     mangohud
@@ -48,6 +69,8 @@
     protontricks
     vlc
     openrgb
+    
+    # Music & Media
     ncspot
     spotify
     mumble
@@ -59,7 +82,6 @@
     kew
     spotdl
 
-   
     # Style Packages
     cbonsai
     cmatrix
@@ -69,20 +91,18 @@
     vitetris
   ];
 
-  # Home Manager
-  home-manager.backupFileExtension = "backup";
-
   # Bluetooth
   hardware.bluetooth.enable = true;
-  
-  # Power profiles and policy kit
-  # services.power-profiles-daemon.enable = true; # Battery Daemon replaced by TLP
+
+  # Security & Auth (Required for Bitwarden Biometrics/System Auth)
   security.polkit.enable = true;
-  
+  services.gnome.gnome-keyring.enable = true;
+
   # XDG Portal
   xdg.portal = {
     enable = true;
-    config.common.defaukt = "*";
+    # Use lib.mkForce to override the Niri module's default "gnome" value
+    config.common.default = lib.mkForce "*"; 
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
       xdg-desktop-portal-hyprland

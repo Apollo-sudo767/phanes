@@ -14,6 +14,14 @@
     stylix-stable.url = "github:danth/stylix/release-25.05";
     stylix-unstable.url = "github:danth/stylix";
 
+    # Zen-Browser
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+      };
+    };
+    
     # Extras
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
 
@@ -33,7 +41,7 @@
     };
   };
 
-  outputs = { self, nixpkgs-unstable, nixpkgs-stable, home-manager-unstable, home-manager-stable, stylix-stable, stylix-unstable, nix-minecraft, nixvim-stable, nixvim-unstable, darwin, ... }@inputs:
+  outputs = { self, nixpkgs-unstable, nixpkgs-stable, home-manager-unstable, home-manager-stable, stylix-stable, stylix-unstable, nix-minecraft, nixvim-stable, nixvim-unstable, darwin, zen-browser, ... }@inputs:
   let
     getNixvim = hmInputs: if hmInputs.home-manager == home-manager-stable then nixvim-stable else nixvim-unstable;
 

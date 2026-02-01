@@ -34,7 +34,8 @@ gestures {
 }
 
 // Startup apps here
-spawn-at-startup "swaybg" "-i" "~/.config/wallpapers/niri.jpg"
+// spawn-at-startup "swaybg" "-i" "$HOME/.config/wallpapers/niri.jpg"
+spawn-sh-at-startup "/run/current-system/swp/bin/swaybg -i $HOME/.config/wallpapers/niri.jpg -m fill"
 spawn-at-startup "hypridle"
 
 input {
