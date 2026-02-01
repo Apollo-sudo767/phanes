@@ -34,7 +34,7 @@ gestures {
 }
 
 // Startup apps here
-spawn-at-startup "swaybg" "-i" "/home/apollo/.config/wallpapers/niri.jpg"
+spawn-at-startup "swaybg" "-i" "~/.config/wallpapers/niri.jpg"
 spawn-at-startup "hypridle"
 
 input {
@@ -383,7 +383,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Q hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-i" "/home/apollo/.config/wallpapers/niri.jpg"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-i" "~/.config/wallpapers/niri.jpg"; }
     Mod+Shift+Q hotkey-overlay-title="Open a Browser: Firefox" { spawn "firefox"; }
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
