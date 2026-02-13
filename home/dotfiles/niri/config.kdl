@@ -35,7 +35,7 @@ gestures {
 
 // Startup apps here
 // spawn-at-startup "swaybg" "-i" "$HOME/.config/wallpapers/niri.jpg"
-spawn-sh-at-startup "/run/current-system/swp/bin/swaybg -i $HOME/.config/wallpapers/niri.jpg -m fill"
+spawn-sh-at-startup "swaybg -i $HOME/.config/wallpapers/niri.jpg -m fill"
 spawn-at-startup "hypridle"
 
 input {
@@ -337,7 +337,7 @@ window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"zen$"# title="^Picture-in-Picture$"
     open-floating true
 }
 
@@ -385,7 +385,7 @@ binds {
     Mod+Q hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-i" "~/.config/wallpapers/niri.jpg"; }
-    Mod+Shift+Q hotkey-overlay-title="Open a Browser: Firefox" { spawn "firefox"; }
+    Mod+Shift+Q hotkey-overlay-title="Open a Browser: Zen" { spawn "zen"; }
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
     // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
