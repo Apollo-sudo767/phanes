@@ -12,6 +12,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [ "snd_hda_intel.model=alc897-headset" ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/14fad7d0-a853-4077-b00b-45a319a12f8c";
