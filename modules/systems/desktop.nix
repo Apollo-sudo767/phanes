@@ -42,7 +42,7 @@ in
       gamescopeSession.enable = true;
     };
     dconf.enable = true;
-    firefox.enable = true;
+    # firefox.enable = true;
   };
 
   # System packages

@@ -8,6 +8,25 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
+  # Earbuds
+  boot.extraModprobeConfig = ''
+  options snd-hda-intel patch=hda-jack-retask.fw
+  '';
+
+  hardware.firmware = [
+    (pkgs.runCommand "hda-jack-retask-fw" {} ''
+      mkdir -p $out/lib/firmware
+      cat <<EOF > $out/lib/firmware/hda-jack-retask.fw
+  [codec]
+  0x10ec0897 0x1022c950 0
+
+  [pincfg]
+  0x19 0x03a11020
+  0x1b 0x40000000
+  EOF
+    '')
+  ];
+
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
