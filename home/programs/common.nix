@@ -17,7 +17,7 @@
 
     # misc
     libnotify
-    wineWowPackages.wayland
+    wineWow64Packages.wayland
     xdg-utils
     libnotify
   ];
