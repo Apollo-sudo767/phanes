@@ -89,6 +89,7 @@ in
     asciiquarium
     cava
     vitetris
+    ani-cli
   ];
 
   # Bluetooth
