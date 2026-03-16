@@ -10,7 +10,7 @@
 prefer-no-csd
 
 output "DP-4" {
-    mode "1920x1080@165"
+    mode "2560x1440@180"
     scale 1
     transform "normal"
     position x=0 y=0
@@ -20,7 +20,7 @@ output "DP-5" {
      mode "1920x1080@165"
      scale 1
      transform "normal"
-     position x=1920 y=0 
+     position x=2560 y=0 
 }
 
 environment {
